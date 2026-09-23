@@ -29,6 +29,9 @@ describe('monthsBetween', () => {
     expect(monthsBetween('2025-08', '2026-08')).toBe(13);
     expect(monthsBetween('2025-08', '2025-08')).toBe(1);
   });
+  it('rechaza fin anterior al inicio', () => {
+    expect(() => monthsBetween('2026-01', '2025-12')).toThrow();
+  });
 });
 
 describe('formatDuration', () => {
@@ -42,5 +45,9 @@ describe('formatDuration', () => {
     expect(formatDuration(13, 'en')).toBe('1 yr 1 mo');
     expect(formatDuration(5, 'en')).toBe('5 mos');
     expect(formatDuration(24, 'en')).toBe('2 yrs');
+  });
+  it('rechaza valores no enteros positivos', () => {
+    expect(() => formatDuration(0, 'es')).toThrow();
+    expect(() => formatDuration(1.5, 'es')).toThrow();
   });
 });

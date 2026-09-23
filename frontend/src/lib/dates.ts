@@ -29,6 +29,9 @@ export function formatRange(start: string, end: string | null, locale: Locale): 
 export function monthsBetween(start: string, end: string): number {
   const a = parse(start);
   const b = parse(end);
+  if (end < start) {
+    throw new Error(`La fecha de fin es anterior al inicio: ${start} → ${end}`);
+  }
   return (b.year - a.year) * 12 + (b.month - a.month) + 1;
 }
 
@@ -38,6 +41,9 @@ const UNITS: Record<Locale, { y: [string, string]; m: [string, string] }> = {
 };
 
 export function formatDuration(totalMonths: number, locale: Locale): string {
+  if (!Number.isInteger(totalMonths) || totalMonths < 1) {
+    throw new Error(`totalMonths debe ser un entero positivo (mínimo 1): ${totalMonths}`);
+  }
   const years = Math.floor(totalMonths / 12);
   const months = totalMonths % 12;
   const u = UNITS[locale];

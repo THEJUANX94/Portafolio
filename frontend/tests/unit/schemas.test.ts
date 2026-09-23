@@ -48,17 +48,19 @@ describe('experienceSchema', () => {
   });
 });
 
+const validProfile = {
+  name: 'Juan', title: L('t'), summary: L('s'), location: L('l'), available: true, availabilityNote: L('n'),
+  email: 'a@b.co', linkedin: 'https://linkedin.com/in/x', github: 'https://github.com/x',
+  cv: { es: '/cv/a.pdf', en: '/cv/b.pdf' }, languages: [{ name: L('Español'), level: L('Nativo') }],
+};
+
 describe('profileSchema, skillSchema, courseSchema', () => {
   it('validan entradas mínimas', () => {
-    expect(profileSchema.safeParse({
-      name: 'Juan', title: L('t'), summary: L('s'), location: L('l'), available: true, availabilityNote: L('n'),
-      email: 'a@b.co', linkedin: 'https://linkedin.com/in/x', github: 'https://github.com/x',
-      cv: { es: '/cv/a.pdf', en: '/cv/b.pdf' }, languages: [{ name: L('Español'), level: L('Nativo') }],
-    }).success).toBe(true);
+    expect(profileSchema.safeParse(validProfile).success).toBe(true);
     expect(skillSchema.safeParse({ group: L('g'), tech: ['Docker'], order: 1 }).success).toBe(true);
     expect(courseSchema.safeParse({ name: L('Java'), institution: 'Boomlabs', hours: 200, order: 1 }).success).toBe(true);
   });
   it('rechaza email inválido', () => {
-    expect(profileSchema.safeParse({ email: 'no-es-email' }).success).toBe(false);
+    expect(profileSchema.safeParse({ ...validProfile, email: 'no-es-email' }).success).toBe(false);
   });
 });
