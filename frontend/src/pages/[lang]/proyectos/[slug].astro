@@ -1,0 +1,177 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import LangSwitch from '../../../components/LangSwitch.astro';
+import ThemeToggle from '../../../components/ThemeToggle.astro';
+import { LOCALES, type Locale } from '../../../lib/i18n';
+import { neighbors, relatedExperience } from '../../../lib/projects';
+import { formatRange } from '../../../lib/dates';
+import type { Localized } from '../../../lib/schemas';
+import { t, type UiKey } from '../../../i18n';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return LOCALES.flatMap((lang) => projects.map((p) => ({ params: { lang, slug: p.id } })));
+}
+
+const lang = Astro.params.lang as Locale;
+const slug = Astro.params.slug as string;
+
+const profileEntry = await getEntry('profile', 'main');
+if (!profileEntry) throw new Error('Falta la entrada "main" en src/data/profile.json');
+
+const projects = (await getCollection('projects')).map((p) => ({ id: p.id, ...p.data }));
+const project = projects.find((p) => p.id === slug);
+if (!project) throw new Error(`Proyecto inexistente: ${slug}`);
+const { prev, next } = neighbors(projects, slug);
+
+const experience = (await getCollection('experience')).map((e) => ({
+  id: e.id,
+  role: e.data.role,
+  organization: e.data.organization,
+  start: e.data.start,
+  end: e.data.end,
+  projects: e.data.projects.map((ref) => ref.id),
+}));
+const related = relatedExperience(experience, slug);
+
+const story: [UiKey, Localized][] = [
+  ['project.problem', project.problem],
+  ['project.role', project.role],
+  ['project.solution', project.solution],
+];
+const external = 'text-primary underline underline-offset-4 hover:no-underline';
+---
+<BaseLayout lang={lang} title={`${project.title[lang]} — ${profileEntry.data.name}`} description={project.tagline[lang]}>
+  <div class="mx-auto max-w-3xl px-4 py-6 lg:py-10">
+    <header class="flex items-center justify-between gap-2">
+      <a href={`/${lang}/#projects`} data-back-link class="font-semibold text-primary underline-offset-4 hover:underline">
+        <span aria-hidden="true">← </span>{t(lang, 'project.back')}
+      </a>
+      <div class="flex gap-2">
+        <LangSwitch lang={lang} />
+        <ThemeToggle lang={lang} />
+      </div>
+    </header>
+
+    <main id="main" class="mt-8">
+      <article data-project={project.id}>
+        <h1 class="text-3xl font-bold leading-tight text-primary">{project.title[lang]}</h1>
+        <p class="mt-2 text-lg text-text-muted">{project.tagline[lang]}</p>
+
+        {
+          project.visibility === 'anonymized' && (
+            <p data-anonymized-note class="mt-5 rounded-lg border border-border bg-surface-soft px-4 py-3 text-sm">
+              {t(lang, 'project.anonymized')}
+            </p>
+          )
+        }
+
+        {
+          story.map(([key, text]) => (
+            <section class="mt-8">
+              <h2 class="text-xl font-bold text-primary">{t(lang, key)}</h2>
+              <p class="mt-2 leading-relaxed">{text[lang]}</p>
+            </section>
+          ))
+        }
+
+        <section class="mt-8 rounded-xl border border-accent bg-surface-soft p-5" data-project-result>
+          <h2 class="text-xl font-bold text-primary">{t(lang, 'project.result')}</h2>
+          <p class="mt-2 leading-relaxed">{project.result[lang]}</p>
+          {
+            project.metrics && project.metrics.length > 0 && (
+              <ul class="mt-3 list-disc space-y-1 pl-5 font-semibold">
+                {project.metrics.map((m) => <li>{m[lang]}</li>)}
+              </ul>
+            )
+          }
+        </section>
+
+        {
+          project.images.length > 0 && (
+            <section class="mt-8">
+              <h2 class="text-xl font-bold text-primary">{t(lang, 'project.images')}</h2>
+              <div class="mt-3 grid gap-4">
+                {project.images.map((img) => (
+                  <figure>
+                    <img src={img.src} alt={img.alt[lang]} loading="lazy" class="w-full rounded-lg border border-border" />
+                    <figcaption class="mt-1 text-sm text-text-muted">{img.alt[lang]}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </section>
+          )
+        }
+
+        <section class="mt-8">
+          <h2 class="text-xl font-bold text-primary">{t(lang, 'project.tech')}</h2>
+          <ul class="mt-3 flex flex-wrap gap-1.5">
+            {project.tech.map((tech) => <li class="rounded-full border border-border bg-surface px-2.5 py-1 text-sm">{tech}</li>)}
+          </ul>
+        </section>
+
+        {
+          project.visibility === 'full' && (project.repo || project.demo) && (
+            <section class="mt-8">
+              <h2 class="text-xl font-bold text-primary">{t(lang, 'project.links')}</h2>
+              <ul class="mt-2 space-y-1">
+                {project.repo && (
+                  <li>
+                    <a href={project.repo} target="_blank" rel="noopener" data-repo-link class={external}>
+                      {t(lang, 'project.repo')}<span class="sr-only"> {t(lang, 'profile.newTab')}</span>
+                    </a>
+                  </li>
+                )}
+                {project.demo && (
+                  <li>
+                    <a href={project.demo} target="_blank" rel="noopener" data-demo-link class={external}>
+                      {t(lang, 'project.demo')}<span class="sr-only"> {t(lang, 'profile.newTab')}</span>
+                    </a>
+                  </li>
+                )}
+              </ul>
+            </section>
+          )
+        }
+
+        {
+          related.length > 0 && (
+            <section class="mt-8" data-project-related>
+              <h2 class="text-xl font-bold text-primary">{t(lang, 'project.related')}</h2>
+              <ul class="mt-2 space-y-1">
+                {related.map((e) => (
+                  <li>
+                    <a href={`/${lang}/experiencia/`} class={external}>{e.role[lang]}</a>
+                    <span class="text-text-muted"> · {e.organization[lang]} · {formatRange(e.start, e.end, lang)}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )
+        }
+      </article>
+
+      {
+        (prev || next) && (
+          <nav aria-label={t(lang, 'project.more')} class="mt-12 grid gap-3 sm:grid-cols-2" data-project-nav>
+            {prev ? (
+              <a href={`/${lang}/proyectos/${prev.id}/`} rel="prev" data-prev-link class="rounded-xl border border-border bg-surface p-4 hover:border-accent focus-visible:outline-2 focus-visible:outline-primary">
+                <span class="block text-sm text-text-muted"><span aria-hidden="true">← </span>{t(lang, 'project.prev')}</span>
+                <span class="block font-semibold">{prev.title[lang]}</span>
+              </a>
+            ) : (
+              <span aria-hidden="true" class="hidden sm:block" />
+            )}
+            {next && (
+              <a href={`/${lang}/proyectos/${next.id}/`} rel="next" data-next-link class="rounded-xl border border-border bg-surface p-4 text-right hover:border-accent focus-visible:outline-2 focus-visible:outline-primary">
+                <span class="block text-sm text-text-muted">{t(lang, 'project.next')}<span aria-hidden="true"> →</span></span>
+                <span class="block font-semibold">{next.title[lang]}</span>
+              </a>
+            )}
+          </nav>
+        )
+      }
+    </main>
+  </div>
+</BaseLayout>
