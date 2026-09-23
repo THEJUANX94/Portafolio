@@ -43,6 +43,8 @@ graph TD
 | `src/components/` | Componentes Astro sin JS de cliente, salvo scripts mínimos (tema). |
 | `src/pages/` | `index.astro` (redirección por idioma), `404.astro`, `[lang]/…` generadas para `es` y `en`. |
 | `src/styles/global.css` | Tailwind + tokens de color claro/oscuro. |
+| `src/lib/home.ts` | Selección de datos de la principal: orden, proyectos destacados, empleo más reciente, iniciales. |
+| `src/components/` (principal) | `ProfileCard`, `Section`, `ExperienceSummary`, `ProjectCard`, `SkillGroup`, `EducationList`, `ContactCTA`. Reciben `lang` y datos ya resueltos; sin JS de cliente. |
 
 ## 4. Idiomas
 
@@ -59,3 +61,4 @@ Todo texto visible es `{ es, en }`. Reglas que se validan (el build falla por es
 Variables CSS en `:root` (claro) y `[data-theme="dark"]` / `prefers-color-scheme: dark` (oscuro), expuestas a Tailwind con `@theme inline` (`bg-primary`, `text-text-muted`, …). La elección manual se guarda en `localStorage["theme"]`.
 
 Última actualización: 2026-09-22
+

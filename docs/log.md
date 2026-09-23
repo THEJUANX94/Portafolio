@@ -12,5 +12,6 @@ tags: [portafolio, changelog]
 - Astro solo registra (no falla) referencias rotas entre colecciones → se agregó `tests/unit/content.test.ts`. La 404 queda `noindex`.
 - **2026-09-22** — Decisiones del autor: el CV en PDF se publica tal cual, incluido el teléfono (decisión explícita; `profile.json` no lo muestra en la página). Aprobados los textos de proyectos que no salen literalmente del CV (Postulaciones docentes, Cárdenas Visión, Consolidación de infraestructura).
 - Pendiente: CV en inglés (por ahora `cv.en` apunta al PDF en español); confirmar si la hackatón se ganó (hoy se describe como participación y liderazgo del reto); fechas de AzureDistribuidos, Ancla y de inicio en la UPTC.
+- **2026-09-22** — Fase 2 ([plan](superpowers/plans/2026-09-22-fase2-pagina-principal.md)): página principal con tarjeta de perfil (CV, contacto, disponibilidad, formación, idiomas) y seis secciones; `profile.education` en el esquema; tarjetas de proyecto con franja de acento mientras no haya capturas; acciones de CI actualizadas (aviso de Node 20). Los enlaces a `/experiencia/` y `/proyectos/<id>/` responden 404 hasta las fases 3 y 4.
 
 Última actualización: 2026-09-22
