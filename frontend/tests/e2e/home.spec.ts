@@ -38,11 +38,15 @@ test.describe('principal en español', () => {
   });
 });
 
-test('principal en inglés usa textos en inglés', async ({ page }) => {
+test('principal en inglés usa textos en inglés', async ({ page, request }) => {
   await page.goto('/en/');
   await expect(page.getByRole('heading', { level: 2, name: 'Featured projects' })).toBeVisible();
   await expect(page.locator('[data-cv-link]')).toHaveText('Download CV');
   await expect(page.locator('[data-journey-link]')).toHaveAttribute('href', '/en/experiencia/');
+  const cv = page.locator('[data-cv-link]');
+  const href = await cv.getAttribute('href');
+  expect(href).toBe('/cv/CV-Juan-Sebastian-Martinez-EN.pdf');
+  expect((await request.get(href!)).status()).toBe(200);
 });
 
 test('escritorio: tarjeta a la izquierda del contenido', async ({ page }) => {

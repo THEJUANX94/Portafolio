@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Juan Sebastián Martínez Noreña — Resume</title>
+<style>
+  @page { size: Letter; margin: 0.55in 0.6in 0.6in; }
+  * { box-sizing: border-box; }
+  body { font-family: Arial, Helvetica, sans-serif; color: #111; font-size: 9.6pt; line-height: 1.38; margin: 0; }
+  h1 { font-size: 20pt; letter-spacing: 0.5px; margin: 0 0 4px; font-weight: 700; }
+  .subtitle { color: #555; font-size: 10.5pt; margin-bottom: 6px; }
+  .contact { color: #333; font-size: 8.6pt; margin: 1px 0; }
+  hr.top { border: 0; border-top: 2.5px solid #222; margin: 10px 0 12px; }
+  h2 { font-size: 10.5pt; letter-spacing: 1.6px; margin: 14px 0 6px; padding-bottom: 3px; border-bottom: 1px solid #bbb; font-weight: 700; }
+  h3 { font-size: 10pt; margin: 8px 0 1px; }
+  .meta { color: #666; font-size: 9pt; margin-bottom: 4px; }
+  h4 { font-size: 9.4pt; margin: 6px 0 2px; }
+  p { margin: 0 0 4px; text-align: justify; }
+  ul { margin: 0 0 2px; padding-left: 16px; }
+  li { margin: 1px 0; text-align: justify; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; column-gap: 28px; }
+  .cols li { text-align: left; }
+  .repo { color: #555; font-size: 8.4pt; }
+  .page-break { break-before: page; }
+  section { break-inside: auto; }
+  .keep { break-inside: avoid; }
+</style>
+</head>
+<body>
+  <h1>JUAN SEBASTIÁN MARTÍNEZ NOREÑA</h1>
+  <div class="subtitle">Systems and Computing Engineer · Full-Stack Development, DevOps and Infrastructure</div>
+  <div class="contact">Phone: +57 305 411 8732 &nbsp;|&nbsp; Email: sebastianmn03@gmail.com &nbsp;|&nbsp; Available immediately · Remote, hybrid or on-site</div>
+  <div class="contact">LinkedIn: linkedin.com/in/juan-sebastian-martinez-noreña &nbsp;|&nbsp; GitHub: github.com/THEJUANX94</div>
+  <hr class="top">
+
+  <h2>PROFESSIONAL SUMMARY</h2>
+  <p>Systems and Computing Engineer with experience leading the full lifecycle of institutional applications in production: full-stack development, architecture, deployment and infrastructure administration. Technical owner of a portfolio of seven applications used by hundreds of public servants, running on Nutanix AHV virtualized infrastructure with AlmaLinux, while coordinating rotating teams of interns. DevOps-oriented profile: containerization with Docker, routing with Nginx, CI/CD, monitoring, authentication with Keycloak and technical documentation as code (docs-as-code, ADRs). Focused on high availability, standardization and technical sustainability in resource-constrained environments.</p>
+
+  <h2>WORK EXPERIENCE</h2>
+  <div class="keep">
+    <h3>Software &amp; Infrastructure Engineer (Tech Lead)</h3>
+    <div class="meta">Government of Boyacá — IT Department &nbsp;|&nbsp; August 2025 – August 2026</div>
+  </div>
+  <h4>Responsibilities</h4>
+  <ul>
+    <li>Technically led the portfolio of institutional applications in production, defining architecture, development standards and technical priorities.</li>
+    <li>Developed and maintained full-stack applications with Next.js, NestJS, Angular, Node.js, Prisma and PostgreSQL.</li>
+    <li>Administered the virtualized infrastructure on Nutanix AHV (AlmaLinux and Windows Server), ensuring the availability of production environments.</li>
+    <li>Managed production deployments with Docker and Docker Compose, including Nginx routing, TLS certificates and per-environment variables.</li>
+    <li>Administered PostgreSQL databases: modeling, migrations, backups and connection-pool optimization.</li>
+    <li>Handled production incidents, performed root-cause analysis and applied the corresponding corrective actions.</li>
+    <li>Implemented and maintained CI/CD pipelines, service monitoring and server hardening.</li>
+    <li>Wrote the portfolio's technical documentation (manuals, ADRs and operating procedures) following a docs-as-code approach.</li>
+    <li>Coordinated, trained and supervised the rotating teams of interns assigned to the area.</li>
+  </ul>
+  <h4>Achievements</h4>
+  <ul>
+    <li>Reduced virtualized infrastructure by 57% (from 7 to 3 virtual machines) by consolidating the applications into a unified Docker, Docker Compose and Nginx setup, backed by an ADR and a role-based migration plan.</li>
+    <li>Implemented a monitoring and alerting stack for the entire infrastructure (Zabbix 7.4 and Uptime Kuma on Docker/PostgreSQL), replacing reactive failure detection with automatic notifications and centralized visibility of service health.</li>
+    <li>Fully migrated an application's database from Supabase to internal PostgreSQL with PgBouncer, removing the dependency on an external provider and resolving credentials, RLS and ORM configuration.</li>
+    <li>Standardized technical documentation across all 7 repositories (/docs structure, OKF conventions and Twelve-Factor discipline), reducing onboarding time and preserving technical context through the semi-annual rotation of interns.</li>
+    <li>Automated continuous deployment with GitHub Actions and self-hosted runners, eliminating manual steps and reducing release-related errors.</li>
+    <li>Unified institutional authentication with Keycloak and NextAuth, resolving integrations with the corporate proxy and configuration mismatches between environments.</li>
+    <li>Secured the servers through hardening, fail2ban and centralized secrets management, eliminating plain-text credential handling.</li>
+  </ul>
+
+  <div class="keep page-break">
+    <h3>Software Development Intern</h3>
+    <div class="meta">Government of Boyacá — IT Department &nbsp;|&nbsp; March 2025 – July 2025</div>
+    <h4>Responsibilities</h4>
+    <ul>
+      <li>Developed, supported and maintained the applications managed by the IT Department.</li>
+      <li>Supported data modeling and project structuring in the context of a public entity.</li>
+      <li>Built solutions with JavaScript, Google Cloud and the Power Apps environment.</li>
+    </ul>
+    <h4>Achievements</h4>
+    <ul>
+      <li>Hired as the area's permanent technical lead at the end of the internship, taking over leadership of the entire portfolio of institutional applications.</li>
+    </ul>
+  </div>
+
+  <h2>EDUCATION</h2>
+  <h3>Systems and Computing Engineering</h3>
+  <div class="meta" style="color:#333">Universidad Pedagógica y Tecnológica de Colombia (UPTC) — Graduated, 2026</div>
+
+  <h2>TECHNICAL SKILLS</h2>
+  <div class="cols">
+    <ul>
+      <li><b>Languages:</b> Java, TypeScript, JavaScript, Python, SQL</li>
+      <li><b>Backend:</b> NestJS, Node.js, Next.js, Prisma</li>
+      <li><b>Frontend:</b> Angular, Next.js, React</li>
+      <li><b>Databases:</b> PostgreSQL, Oracle SQL, MySQL, SQLite, MongoDB</li>
+      <li><b>Authentication:</b> Keycloak, NextAuth, JWT</li>
+      <li><b>DevOps:</b> Docker, Docker Compose, Nginx, CI/CD (GitHub Actions), Git</li>
+    </ul>
+    <ul>
+      <li><b>Infrastructure:</b> Nutanix AHV, AlmaLinux, Windows Server</li>
+      <li><b>Cloud:</b> Microsoft Azure, Google Cloud (GCP)</li>
+      <li><b>Monitoring:</b> Zabbix 7.4, Uptime Kuma</li>
+      <li><b>Documentation:</b> docs-as-code, ADRs, OKF, Twelve-Factor</li>
+    </ul>
+  </div>
+
+  <h2>FEATURED PROJECTS</h2>
+  <div class="keep">
+    <h3>Distributed student information application</h3>
+    <p>Web system for managing students, enrolled courses, teachers and seats per course in a university setting. Built with TypeScript, Angular and Azure, using PostgreSQL as the database.</p>
+    <div class="repo">Repository: github.com/THEJUANX94/AzureDistribuidos</div>
+  </div>
+  <div class="keep">
+    <h3>Inventory system for a cosmetics company</h3>
+    <p>Desktop application for inventory management and invoicing, built with Java and SQLite.</p>
+    <div class="repo">Repository: github.com/THEJUANX94/Ancla</div>
+  </div>
+
+  <h2>ADDITIONAL TRAINING</h2>
+  <ul>
+    <li>Java Programming — Boomlabs Computer Science (200 hours).</li>
+    <li>Java Diploma Course — Politécnico de Colombia (120 hours).</li>
+    <li>Google Cloud course — GCP Foundations Academy (40 hours, 4 courses).</li>
+  </ul>
+
+  <h2>SOFT SKILLS</h2>
+  <div class="cols">
+    <ul>
+      <li>Technical leadership</li>
+      <li>Solution architecture</li>
+      <li>Results orientation</li>
+      <li>Complex problem solving</li>
+      <li>Teamwork</li>
+    </ul>
+    <ul>
+      <li>Assertive communication</li>
+      <li>Proactivity and autonomy</li>
+      <li>Responsibility and attention to detail</li>
+      <li>Continuous learning</li>
+      <li>Working under resource constraints</li>
+    </ul>
+  </div>
+
+  <h2>LANGUAGES</h2>
+  <p>Spanish: Native &nbsp;|&nbsp; English: Upper-intermediate (B2)</p>
+</body>
+</html>

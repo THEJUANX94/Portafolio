@@ -13,7 +13,8 @@
     "check": "astro check",
     "test": "vitest run",
     "test:e2e": "playwright test",
-    "astro": "astro"
+    "astro": "astro",
+    "cv": "node scripts/build-cv.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
