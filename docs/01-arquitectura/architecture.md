@@ -42,10 +42,11 @@ graph TD
 | `src/i18n/` | Textos de interfaz (botones, etiquetas). Mismas claves en ambos idiomas. |
 | `src/layouts/` | `BaseLayout`: `<head>`, SEO, `hreflang`, script anti-parpadeo del tema. |
 | `src/components/` | Componentes Astro sin JS de cliente, salvo scripts mínimos (tema). |
-| `src/pages/` | `index.astro` (redirección por idioma), `404.astro`, `[lang]/…` generadas para `es` y `en`. |
+| `src/pages/` | `index.astro` (redirección por idioma), `404.astro`, `[lang]/…` generadas para `es` y `en`, incluida `[lang]/proyectos/[slug].astro` (una página por idioma y proyecto). |
 | `src/styles/global.css` | Tailwind + tokens de color claro/oscuro. |
 | `src/lib/home.ts` | Selección de datos de la principal: orden, proyectos destacados, empleo más reciente, iniciales. |
 | `src/components/` (principal) | `ProfileCard`, `Section`, `ExperienceSummary`, `ProjectCard`, `SkillGroup`, `EducationList`, `ContactCTA`. Reciben `lang` y datos ya resueltos; sin JS de cliente. |
+| `src/lib/projects.ts` | Detalle de proyecto: vecinos por `order` y etapas de experiencia relacionadas. |
 
 ## 4. Idiomas
 
