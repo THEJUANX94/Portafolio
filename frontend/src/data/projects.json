@@ -1,0 +1,137 @@
+[
+  {
+    "id": "consolidacion-infraestructura",
+    "title": { "es": "Consolidación de infraestructura", "en": "Infrastructure consolidation" },
+    "tagline": {
+      "es": "De 7 a 3 servidores virtuales sin perder servicio",
+      "en": "From 7 to 3 virtual servers without losing service"
+    },
+    "problem": {
+      "es": "Siete aplicaciones institucionales repartidas en siete máquinas virtuales, cada una configurada distinto y con fallas que se detectaban cuando un usuario se quejaba.",
+      "en": "Seven institutional applications spread across seven virtual machines, each configured differently, with failures detected only when a user complained."
+    },
+    "role": { "es": "Líder técnico: diseño, plan de migración y ejecución.", "en": "Technical lead: design, migration plan and execution." },
+    "solution": {
+      "es": "Unifiqué las aplicaciones en un esquema común con Docker, Docker Compose y Nginx, documentado en un ADR, y agregué monitoreo con alertas automáticas (Zabbix y Uptime Kuma).",
+      "en": "I unified the applications on a common Docker, Docker Compose and Nginx setup, documented in an ADR, and added monitoring with automatic alerts (Zabbix and Uptime Kuma)."
+    },
+    "result": {
+      "es": "57% menos infraestructura y visibilidad centralizada del estado de todos los servicios.",
+      "en": "57% less infrastructure and centralized visibility of every service's health."
+    },
+    "metrics": [
+      { "es": "−57% máquinas virtuales (7 → 3)", "en": "−57% virtual machines (7 → 3)" }
+    ],
+    "images": [],
+    "tech": ["Docker", "Docker Compose", "Nginx", "Zabbix", "Uptime Kuma", "AlmaLinux", "Nutanix AHV"],
+    "visibility": "anonymized",
+    "featured": true,
+    "order": 1
+  },
+  {
+    "id": "postulaciones-docentes",
+    "title": { "es": "Plataforma de postulaciones docentes", "en": "Teacher application platform" },
+    "tagline": {
+      "es": "Postulaciones y traslados docentes de la Secretaría de Educación en línea",
+      "en": "Online teacher applications and transfers for the Department of Education"
+    },
+    "problem": {
+      "es": "Los procesos de postulación y traslado de docentes del departamento requerían gestión manual de documentos y solicitudes.",
+      "en": "Teacher application and transfer processes in the department relied on manual handling of documents and requests."
+    },
+    "role": { "es": "Desarrollo full-stack y despliegue.", "en": "Full-stack development and deployment." },
+    "solution": {
+      "es": "Aplicación web donde los docentes se postulan en línea y el equipo de la Secretaría revisa y gestiona las solicitudes.",
+      "en": "A web application where teachers apply online and the Department's team reviews and manages requests."
+    },
+    "result": {
+      "es": "Proceso centralizado y digital para docentes de todo el departamento.",
+      "en": "A centralized, digital process for teachers across the department."
+    },
+    "images": [],
+    "tech": ["Node.js", "PostgreSQL", "Docker"],
+    "visibility": "anonymized",
+    "featured": true,
+    "order": 2
+  },
+  {
+    "id": "cardenas-vision",
+    "title": { "es": "Reto Cárdenas Visión — Hackathon Boyacá Innovate 2025", "en": "Cárdenas Visión challenge — Hackathon Boyacá Innovate 2025" },
+    "tagline": {
+      "es": "Solución creada en una hackatón que la empresa siguió desarrollando con nosotros",
+      "en": "A hackathon solution the company kept developing with us"
+    },
+    "problem": {
+      "es": "Reto empresarial de Cárdenas Visión planteado en la primera Hackathon Boyacá Innovate (28–30 de octubre de 2025).",
+      "en": "Business challenge from Cárdenas Visión at the first Hackathon Boyacá Innovate (October 28–30, 2025)."
+    },
+    "role": { "es": "Líder del equipo.", "en": "Team lead." },
+    "solution": {
+      "es": "Aplicación con gestión de citas y un canal de atención automatizado con IA.",
+      "en": "An application with appointment management and an AI-powered automated service channel."
+    },
+    "result": {
+      "es": "La solución se entregó a Cárdenas Visión y el desarrollo continúa en conjunto con la empresa.",
+      "en": "The solution was handed over to Cárdenas Visión and development continues together with the company."
+    },
+    "images": [],
+    "tech": ["Node.js", "React", "n8n", "Vapi"],
+    "visibility": "anonymized",
+    "featured": true,
+    "order": 3
+  },
+  {
+    "id": "azure-distribuidos",
+    "title": { "es": "Aplicación distribuida de estudiantes", "en": "Distributed student application" },
+    "tagline": {
+      "es": "Gestión de estudiantes, materias, docentes y cupos en la nube",
+      "en": "Cloud-based management of students, courses, teachers and seats"
+    },
+    "problem": {
+      "es": "Proyecto universitario: gestionar estudiantes, materias inscritas, docentes y cupos por materia en un sistema distribuido.",
+      "en": "University project: manage students, enrolled courses, teachers and seats per course in a distributed system."
+    },
+    "role": { "es": "Desarrollo full-stack.", "en": "Full-stack development." },
+    "solution": {
+      "es": "Sistema web con Angular y TypeScript desplegado en Azure, con PostgreSQL.",
+      "en": "Web system built with Angular and TypeScript, deployed on Azure, with PostgreSQL."
+    },
+    "result": {
+      "es": "Aplicación funcional con código abierto en GitHub.",
+      "en": "Working application with open-source code on GitHub."
+    },
+    "images": [],
+    "tech": ["TypeScript", "Angular", "Azure", "PostgreSQL"],
+    "visibility": "full",
+    "repo": "https://github.com/THEJUANX94/AzureDistribuidos",
+    "featured": true,
+    "order": 4
+  },
+  {
+    "id": "ancla",
+    "title": { "es": "Ancla — inventario y facturación", "en": "Ancla — inventory and invoicing" },
+    "tagline": {
+      "es": "Inventario y facturación para una empresa de maquillaje",
+      "en": "Inventory and invoicing for a cosmetics business"
+    },
+    "problem": {
+      "es": "Una empresa de maquillaje necesitaba controlar su inventario y facturar sin hojas de cálculo.",
+      "en": "A cosmetics business needed to track inventory and issue invoices without spreadsheets."
+    },
+    "role": { "es": "Desarrollo completo.", "en": "End-to-end development." },
+    "solution": {
+      "es": "Aplicación de escritorio en Java con base de datos SQLite.",
+      "en": "Desktop application in Java with an SQLite database."
+    },
+    "result": {
+      "es": "Inventario y facturación en una sola herramienta.",
+      "en": "Inventory and invoicing in a single tool."
+    },
+    "images": [],
+    "tech": ["Java", "SQLite"],
+    "visibility": "full",
+    "repo": "https://github.com/THEJUANX94/Ancla",
+    "featured": false,
+    "order": 5
+  }
+]

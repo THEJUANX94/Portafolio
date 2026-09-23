@@ -1,0 +1,47 @@
+[
+  {
+    "id": "tech-lead-gobernacion",
+    "line": "work",
+    "organization": { "es": "Gobernación de Boyacá — Dirección de Sistemas", "en": "Government of Boyacá — IT Department" },
+    "role": { "es": "Ingeniero de Software e Infraestructura (Tech Lead)", "en": "Software & Infrastructure Engineer (Tech Lead)" },
+    "start": "2025-08",
+    "end": "2026-08",
+    "highlights": [
+      { "es": "Reduje 57% la infraestructura (de 7 a 3 servidores virtuales) unificando las aplicaciones con Docker y Nginx.", "en": "Cut infrastructure by 57% (7 to 3 virtual servers) by unifying the applications on Docker and Nginx." },
+      { "es": "Lideré 7 aplicaciones en producción usadas por cientos de funcionarios.", "en": "Led 7 production applications used by hundreds of public servants." },
+      { "es": "Puse monitoreo y alertas automáticas en toda la infraestructura (Zabbix, Uptime Kuma).", "en": "Set up monitoring and automatic alerts across the infrastructure (Zabbix, Uptime Kuma)." },
+      { "es": "Automaticé los despliegues con GitHub Actions, eliminando pasos manuales.", "en": "Automated deployments with GitHub Actions, removing manual steps." },
+      { "es": "Estandaricé la documentación de los 7 repositorios y coordiné a los equipos de practicantes.", "en": "Standardized documentation across all 7 repositories and coordinated intern teams." }
+    ],
+    "tech": ["Next.js", "NestJS", "Angular", "Node.js", "Prisma", "PostgreSQL", "Docker", "Nginx", "Keycloak", "GitHub Actions"],
+    "projects": ["consolidacion-infraestructura", "postulaciones-docentes"]
+  },
+  {
+    "id": "practicante-gobernacion",
+    "line": "work",
+    "organization": { "es": "Gobernación de Boyacá — Dirección de Sistemas", "en": "Government of Boyacá — IT Department" },
+    "role": { "es": "Practicante de Desarrollo de Software", "en": "Software Development Intern" },
+    "start": "2025-03",
+    "end": "2025-07",
+    "highlights": [
+      { "es": "Desarrollé y mantuve aplicaciones de la Dirección de Sistemas.", "en": "Built and maintained the IT Department's applications." },
+      { "es": "Al terminar la práctica fui vinculado como responsable técnico del área.", "en": "After the internship I was hired as the area's technical lead." }
+    ],
+    "tech": ["JavaScript", "Google Cloud", "Power Apps"],
+    "projects": []
+  },
+  {
+    "id": "hackathon-cardenas-vision",
+    "line": "projects",
+    "organization": { "es": "Hackathon Boyacá Innovate 2025 · Cárdenas Visión", "en": "Hackathon Boyacá Innovate 2025 · Cárdenas Visión" },
+    "role": { "es": "Líder de equipo", "en": "Team lead" },
+    "start": "2025-10",
+    "end": null,
+    "highlights": [
+      { "es": "Lideré al equipo que resolvió el reto empresarial de Cárdenas Visión.", "en": "Led the team that tackled Cárdenas Visión's business challenge." },
+      { "es": "La solución se entregó a la empresa y seguimos desarrollándola en conjunto.", "en": "The solution was handed over to the company and we keep developing it together." }
+    ],
+    "tech": ["Node.js", "React", "n8n", "Vapi"],
+    "projects": ["cardenas-vision"]
+  }
+]

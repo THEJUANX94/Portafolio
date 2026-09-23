@@ -1,0 +1,31 @@
+[
+  {
+    "id": "main",
+    "name": "Juan Sebastián Martínez Noreña",
+    "title": {
+      "es": "Ingeniero de Software · Full-Stack, DevOps e Infraestructura",
+      "en": "Software Engineer · Full-Stack, DevOps & Infrastructure"
+    },
+    "summary": {
+      "es": "Construyo aplicaciones web y me aseguro de que funcionen bien en producción. Lideré técnicamente siete aplicaciones de la Gobernación de Boyacá que usan cientos de funcionarios, desde el código hasta los servidores.",
+      "en": "I build web applications and make sure they run reliably in production. I was the technical lead for seven applications at the Government of Boyacá used by hundreds of public servants, from code to servers."
+    },
+    "location": { "es": "Boyacá, Colombia", "en": "Boyacá, Colombia" },
+    "available": true,
+    "availabilityNote": {
+      "es": "Disponible de inmediato · remoto, híbrido o presencial",
+      "en": "Available now · remote, hybrid or on-site"
+    },
+    "email": "sebastianmn03@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/juan-sebastian-martinez-nore%C3%B1a",
+    "github": "https://github.com/THEJUANX94",
+    "cv": {
+      "es": "/cv/CV-Juan-Sebastian-Martinez-ES.pdf",
+      "en": "/cv/CV-Juan-Sebastian-Martinez-ES.pdf"
+    },
+    "languages": [
+      { "name": { "es": "Español", "en": "Spanish" }, "level": { "es": "Nativo", "en": "Native" } },
+      { "name": { "es": "Inglés", "en": "English" }, "level": { "es": "Intermedio-alto (B2)", "en": "Upper-intermediate (B2)" } }
+    ]
+  }
+]

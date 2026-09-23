@@ -1,0 +1,6 @@
+[
+  { "id": "hackathon-2025", "name": { "es": "Hackathon Boyacá Innovate 2025 — Reto Empresarial Cárdenas Visión", "en": "Hackathon Boyacá Innovate 2025 — Cárdenas Visión Business Challenge" }, "institution": "Boyacá Innovate", "hours": 30, "year": 2025, "order": 1 },
+  { "id": "java-boomlabs", "name": { "es": "Programación en Java", "en": "Java Programming" }, "institution": "Boomlabs Computer Science", "hours": 200, "order": 2 },
+  { "id": "java-politecnico", "name": { "es": "Diplomado de Java", "en": "Java Diploma Course" }, "institution": "Politécnico de Colombia", "hours": 120, "order": 3 },
+  { "id": "gcp-foundations", "name": { "es": "Google Cloud (4 cursos)", "en": "Google Cloud (4 courses)" }, "institution": "GCP Foundations Academy", "hours": 40, "order": 4 }
+]
