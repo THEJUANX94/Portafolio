@@ -39,7 +39,7 @@ const stations: StationView[] = (await getCollection('experience')).map((e) => (
 
 const layout = buildMetro(stations, now);
 ---
-<BaseLayout lang={lang} title={`${t(lang, 'journey.title')} — Juan Sebastián Martínez`} description={t(lang, 'journey.description')}>
+<BaseLayout lang={lang} title={`${t(lang, 'journey.title')} — ${profileEntry.data.name}`} description={t(lang, 'journey.description')}>
   <div class="mx-auto max-w-3xl px-4 py-6 lg:py-10">
     <header class="flex items-center justify-between gap-2">
       <a href={`/${lang}/`} data-back-link class="font-semibold text-primary underline-offset-4 hover:underline">

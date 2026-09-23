@@ -53,4 +53,20 @@ describe('buildMetro — tramos por fila', () => {
     // fila 2: intern — work termina
     expect(rows[2].tracks.work).toEqual({ up: true, down: false });
   });
+
+  it('una sola línea: el tramo corre hasta la última estación', () => {
+    const master = e('master', 'education', '2024-01', '2025-12');
+    const uptc = e('uptc', 'education', '2020-01', '2023-12');
+    const { rows } = buildMetro([master, uptc], NOW);
+    expect(rows[0].tracks).toEqual({
+      work: { up: false, down: false },
+      projects: { up: false, down: false },
+      education: { up: true, down: true },
+    });
+    expect(rows[1].tracks).toEqual({
+      work: { up: false, down: false },
+      projects: { up: false, down: false },
+      education: { up: true, down: false },
+    });
+  });
 });

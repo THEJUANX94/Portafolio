@@ -13,8 +13,8 @@
   --border: #e4dff0;
   --success: #15803d;
   --line-work: #4c1d95;
-  --line-projects: #a78bfa;
-  --line-education: #a8a29e;
+  --line-projects: #8b5cf6;
+  --line-education: #78716c;
   color-scheme: light;
 }
 
@@ -31,7 +31,7 @@
     --border: #3a2a57;
     --success: #4ade80;
     --line-work: #c4b5fd;
-    --line-projects: #7c3aed;
+    --line-projects: #8b5cf6;
     --line-education: #78716c;
     color-scheme: dark;
   }
@@ -49,7 +49,7 @@
   --border: #3a2a57;
   --success: #4ade80;
   --line-work: #c4b5fd;
-  --line-projects: #7c3aed;
+  --line-projects: #8b5cf6;
   --line-education: #78716c;
   color-scheme: dark;
 }
