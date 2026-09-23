@@ -10,7 +10,7 @@ Portafolio web bilingüe (español / inglés) para reclutadores: perfil, experie
 | Contenido | JSON validado con zod (content collections) |
 | Backend | Ninguno en v1 (ver [ADR 0002](docs/01-arquitectura/decisions/0002-sin-backend-v1.md)) |
 | Pruebas | Vitest + Playwright |
-| Deploy | Hosting estático, por definir ([deploy.md](docs/03-operacion/deploy.md)) |
+| Deploy | Cloudflare Pages → https://jsmartinez-dev.pages.dev ([deploy.md](docs/03-operacion/deploy.md)) |
 
 ## Estructura
 
