@@ -10,6 +10,7 @@ import EducationList from '../../components/EducationList.astro';
 import ContactCTA from '../../components/ContactCTA.astro';
 import { LOCALES, type Locale } from '../../lib/i18n';
 import { byOrder, featuredProjects, latestWork } from '../../lib/home';
+import { personJsonLd } from '../../lib/seo';
 import { t } from '../../i18n';
 
 export function getStaticPaths() {
@@ -30,7 +31,8 @@ const projects = featuredProjects((await getCollection('projects')).map((e) => (
 const skills = byOrder((await getCollection('skills')).map((e) => e.data));
 const courses = byOrder((await getCollection('courses')).map((e) => e.data));
 ---
-<BaseLayout lang={lang}>
+<BaseLayout lang={lang} type="profile">
+  <script type="application/ld+json" set:html={JSON.stringify(personJsonLd(profile, lang, new URL(`/${lang}/`, Astro.site).href))} />
   <div class="mx-auto grid max-w-6xl gap-6 px-4 py-6 lg:grid-cols-[20rem_minmax(0,1fr)] lg:items-start lg:gap-8 lg:py-10">
     <ProfileCard lang={lang} profile={profile} />
 

@@ -43,7 +43,7 @@ const story: [UiKey, Localized][] = [
 ];
 const external = 'text-primary underline underline-offset-4 hover:no-underline';
 ---
-<BaseLayout lang={lang} title={`${project.title[lang]} — ${profileEntry.data.name}`} description={project.tagline[lang]}>
+<BaseLayout lang={lang} title={`${project.title[lang]} — ${profileEntry.data.name}`} description={project.tagline[lang]} type="article">
   <div class="mx-auto max-w-3xl px-4 py-6 lg:py-10">
     <header class="flex items-center justify-between gap-2">
       <a href={`/${lang}/#projects`} data-back-link class="font-semibold text-primary underline-offset-4 hover:underline">
