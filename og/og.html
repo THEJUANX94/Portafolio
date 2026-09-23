@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin: 0; }
+  body { width: 1200px; height: 630px; display: flex; flex-direction: column; justify-content: center;
+    padding: 0 96px; box-sizing: border-box; font-family: "Plus Jakarta Sans Variable", Arial, sans-serif;
+    background: linear-gradient(135deg, #2e1065 0%, #4c1d95 60%, #6d28d9 100%); color: #ede9fe; }
+  .badge { display: inline-flex; align-items: center; gap: 12px; align-self: flex-start; background: rgba(237,233,254,.14);
+    border-radius: 999px; padding: 10px 22px; font-size: 26px; }
+  .dot { width: 14px; height: 14px; border-radius: 50%; background: #4ade80; }
+  h1 { font-size: 72px; line-height: 1.05; margin: 36px 0 18px; color: #fff; }
+  p { font-size: 34px; margin: 0; color: #c4b5fd; }
+  .mono { position: absolute; right: 96px; top: 80px; width: 120px; height: 120px; border-radius: 32px;
+    background: #ede9fe; color: #4c1d95; display: grid; place-items: center; font-size: 52px; font-weight: 800; }
+</style>
+</head>
+<body>
+  <div class="mono" id="mono"></div>
+  <div class="badge"><span class="dot"></span><span id="availability"></span></div>
+  <h1 id="name"></h1>
+  <p id="title"></p>
+</body>
+</html>

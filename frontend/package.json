@@ -14,7 +14,8 @@
     "test": "vitest run",
     "test:e2e": "playwright test",
     "astro": "astro",
-    "cv": "node scripts/build-cv.mjs"
+    "cv": "node scripts/build-cv.mjs",
+    "og": "node scripts/build-og.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
