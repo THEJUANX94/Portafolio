@@ -1,0 +1,20 @@
+---
+import type { Locale } from '../lib/i18n';
+import { t } from '../i18n';
+
+interface Props {
+  lang: Locale;
+  email: string;
+}
+const { lang, email } = Astro.props;
+---
+<div>
+  <p>{t(lang, 'home.freelance.body')}</p>
+  <a
+    href={`mailto:${email}`}
+    data-freelance-link
+    class="mt-4 inline-block rounded-lg border border-primary px-4 py-2.5 font-semibold text-primary hover:bg-surface-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+  >
+    {t(lang, 'home.freelance.cta')}
+  </a>
+</div>

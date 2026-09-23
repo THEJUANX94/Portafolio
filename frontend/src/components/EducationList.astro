@@ -1,0 +1,31 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { Locale } from '../lib/i18n';
+import { t } from '../i18n';
+
+interface Props {
+  lang: Locale;
+  education: CollectionEntry<'profile'>['data']['education'];
+  courses: CollectionEntry<'courses'>['data'][];
+}
+const { lang, education, courses } = Astro.props;
+---
+<div>
+  <p class="text-lg font-semibold">{education.degree[lang]}</p>
+  <p class="text-text-muted">{education.institution} · {education.year}</p>
+
+  <h3 class="mt-6 font-semibold">{t(lang, 'home.courses')}</h3>
+  <ul class="mt-2 divide-y divide-border">
+    {
+      courses.map((c) => (
+        <li data-course class="flex flex-col gap-0.5 py-2.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+          <span>{c.name[lang]}</span>
+          <span class="shrink-0 text-sm text-text-muted">
+            {c.institution}
+            {c.hours && ` · ${c.hours} h`}
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+</div>

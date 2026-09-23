@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { Locale } from '../lib/i18n';
+import { t } from '../i18n';
+import { formatRange, formatDuration, monthsBetween, toYearMonth } from '../lib/dates';
+
+interface Props {
+  lang: Locale;
+  entry: CollectionEntry<'experience'>['data'];
+}
+const { lang, entry } = Astro.props;
+const months = monthsBetween(entry.start, entry.end ?? toYearMonth(new Date()));
+---
+<div data-experience-summary>
+  <p class="text-lg font-semibold">{entry.role[lang]}</p>
+  <p class="text-text-muted">{entry.organization[lang]}</p>
+  <p class="mt-1 text-sm font-medium text-primary">
+    {formatRange(entry.start, entry.end, lang)} · {formatDuration(months, lang)}
+  </p>
+  <ul class="mt-4 list-disc space-y-2 pl-5">
+    {entry.highlights.slice(0, 3).map((h) => <li>{h[lang]}</li>)}
+  </ul>
+  <a
+    href={`/${lang}/experiencia/`}
+    data-journey-link
+    class="mt-5 inline-block rounded-lg bg-primary px-4 py-2.5 font-semibold text-on-primary hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+  >
+    {t(lang, 'home.journey')}
+  </a>
+</div>

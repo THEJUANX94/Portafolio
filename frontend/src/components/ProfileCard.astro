@@ -1,0 +1,76 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { Locale } from '../lib/i18n';
+import { t } from '../i18n';
+import { initials } from '../lib/home';
+import LangSwitch from './LangSwitch.astro';
+import ThemeToggle from './ThemeToggle.astro';
+
+interface Props {
+  lang: Locale;
+  profile: CollectionEntry<'profile'>['data'];
+}
+const { lang, profile: p } = Astro.props;
+const button = 'rounded-lg px-4 py-2.5 text-center font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary';
+---
+<aside
+  aria-label={t(lang, 'profile.label')}
+  data-profile-card
+  class="rounded-2xl border border-border bg-surface p-6 lg:sticky lg:top-6"
+>
+  <div class="flex justify-end gap-2">
+    <LangSwitch lang={lang} />
+    <ThemeToggle lang={lang} />
+  </div>
+
+  <div class="mt-2 flex flex-col items-center text-center">
+    {
+      p.photo ? (
+        <img src={p.photo} alt={p.name} width="112" height="112" class="size-28 rounded-full object-cover" />
+      ) : (
+        <div aria-hidden="true" class="grid size-28 place-items-center rounded-full bg-surface-soft text-3xl font-bold text-primary">
+          {initials(p.name)}
+        </div>
+      )
+    }
+    <h1 class="mt-4 text-2xl font-bold leading-tight text-primary">{p.name}</h1>
+    <p class="mt-1 text-text-muted">{p.title[lang]}</p>
+    {
+      p.available && (
+        <p data-availability class="mt-3 inline-flex items-center gap-2 rounded-full bg-surface-soft px-3 py-1 text-sm font-medium text-text">
+          <span aria-hidden="true" class="size-2 shrink-0 rounded-full bg-success" />
+          {p.availabilityNote[lang]}
+        </p>
+      )
+    }
+  </div>
+
+  <div class="mt-6 flex flex-col gap-2">
+    <a href={p.cv[lang]} download data-cv-link class:list={[button, 'bg-primary text-on-primary hover:opacity-90']}>
+      {t(lang, 'profile.downloadCv')}
+    </a>
+    <a href={`mailto:${p.email}`} data-contact-link class:list={[button, 'border border-primary text-primary hover:bg-surface-soft']}>
+      {t(lang, 'profile.contact')}
+    </a>
+  </div>
+
+  <dl class="mt-6 space-y-3 text-sm">
+    <div>
+      <dt class="text-text-muted">{t(lang, 'profile.location')}</dt>
+      <dd>{p.location[lang]}</dd>
+    </div>
+    <div>
+      <dt class="text-text-muted">{t(lang, 'profile.education')}</dt>
+      <dd>{p.education.degree[lang]} · {p.education.institution}, {p.education.year}</dd>
+    </div>
+    <div>
+      <dt class="text-text-muted">{t(lang, 'profile.languages')}</dt>
+      <dd>{p.languages.map((l) => `${l.name[lang]} (${l.level[lang]})`).join(' · ')}</dd>
+    </div>
+  </dl>
+
+  <ul class="mt-6 flex justify-center gap-6 text-sm font-semibold">
+    <li><a href={p.linkedin} target="_blank" rel="me noopener" class="text-primary underline-offset-4 hover:underline">LinkedIn</a></li>
+    <li><a href={p.github} target="_blank" rel="me noopener" class="text-primary underline-offset-4 hover:underline">GitHub</a></li>
+  </ul>
+</aside>
