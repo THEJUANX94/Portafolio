@@ -12,6 +12,9 @@
   --text-muted: #6b6480;
   --border: #e4dff0;
   --success: #15803d;
+  --line-work: #4c1d95;
+  --line-projects: #a78bfa;
+  --line-education: #a8a29e;
   color-scheme: light;
 }
 
@@ -27,6 +30,9 @@
     --text-muted: #a79cc4;
     --border: #3a2a57;
     --success: #4ade80;
+    --line-work: #c4b5fd;
+    --line-projects: #7c3aed;
+    --line-education: #78716c;
     color-scheme: dark;
   }
 }
@@ -42,6 +48,9 @@
   --text-muted: #a79cc4;
   --border: #3a2a57;
   --success: #4ade80;
+  --line-work: #c4b5fd;
+  --line-projects: #7c3aed;
+  --line-education: #78716c;
   color-scheme: dark;
 }
 
@@ -56,6 +65,9 @@
   --color-text-muted: var(--text-muted);
   --color-border: var(--border);
   --color-success: var(--success);
+  --color-line-work: var(--line-work);
+  --color-line-projects: var(--line-projects);
+  --color-line-education: var(--line-education);
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
 }
 

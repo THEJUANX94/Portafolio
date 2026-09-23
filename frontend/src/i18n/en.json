@@ -26,5 +26,16 @@
   "home.courses": "Courses",
   "home.freelance.title": "Have a project?",
   "home.freelance.body": "I also take on specific projects: web applications, Docker deployments or server setup. Tell me what you need.",
-  "home.freelance.cta": "Get in touch"
+  "home.freelance.cta": "Get in touch",
+  "journey.title": "My journey",
+  "journey.description": "Career journey of Juan Sebastián Martínez: work, projects and education as a metro map.",
+  "journey.intro": "Each station is a stage. Tap one to see what I did there.",
+  "journey.back": "Back to profile",
+  "journey.next": "Next station?",
+  "journey.nextCta": "Let's talk",
+  "journey.legend": "Lines",
+  "journey.projects": "Projects from this stage",
+  "line.work": "Work",
+  "line.projects": "Projects & hackathon",
+  "line.education": "Education"
 }

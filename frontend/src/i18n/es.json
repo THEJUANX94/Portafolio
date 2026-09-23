@@ -26,5 +26,16 @@
   "home.courses": "Cursos",
   "home.freelance.title": "¿Tienes un proyecto?",
   "home.freelance.body": "También acepto proyectos puntuales: aplicaciones web, despliegues con Docker o puesta a punto de servidores. Cuéntame qué necesitas.",
-  "home.freelance.cta": "Escríbeme"
+  "home.freelance.cta": "Escríbeme",
+  "journey.title": "Mi recorrido",
+  "journey.description": "Recorrido profesional de Juan Sebastián Martínez: empleo, proyectos y estudios en un mapa de metro.",
+  "journey.intro": "Cada estación es una etapa. Toca una para ver qué hice ahí.",
+  "journey.back": "Volver al perfil",
+  "journey.next": "¿Siguiente estación?",
+  "journey.nextCta": "Hablemos",
+  "journey.legend": "Líneas",
+  "journey.projects": "Proyectos de esta etapa",
+  "line.work": "Empleo",
+  "line.projects": "Proyectos y hackatón",
+  "line.education": "Estudios"
 }
