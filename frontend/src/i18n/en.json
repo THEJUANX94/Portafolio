@@ -1,0 +1,10 @@
+{
+  "site.title": "Juan Sebastián Martínez — Software Engineer",
+  "site.description": "Portfolio of Juan Sebastián Martínez: full-stack development, DevOps and infrastructure.",
+  "lang.switch": "Español",
+  "lang.switchLabel": "View in Spanish",
+  "theme.toggle": "Toggle light or dark theme",
+  "nav.skip": "Skip to content",
+  "notFound.title": "Page not found",
+  "notFound.back": "Back to home"
+}
