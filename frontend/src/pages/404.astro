@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { t } from '../i18n';
 ---
-<BaseLayout lang="es" title={`404 — ${t('es', 'notFound.title')}`}>
+<BaseLayout lang="es" title={`404 — ${t('es', 'notFound.title')}`} noindex>
   <main id="main" class="mx-auto grid min-h-dvh max-w-xl place-content-center gap-8 px-4 text-center">
     <p class="text-6xl font-bold text-primary">404</p>
     <section>

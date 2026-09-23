@@ -20,7 +20,7 @@ import '../styles/global.css';
     </noscript>
     <script>
       import { pickLocale } from '../lib/i18n';
-      const langs = navigator.languages?.length ? navigator.languages : [navigator.language];
+      const langs = navigator.languages.length ? navigator.languages : [navigator.language];
       location.replace(`/${pickLocale(langs)}/`);
     </script>
   </body>
