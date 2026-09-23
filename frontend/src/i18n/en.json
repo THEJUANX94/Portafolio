@@ -6,5 +6,22 @@
   "theme.toggle": "Toggle light or dark theme",
   "nav.skip": "Skip to content",
   "notFound.title": "Page not found",
-  "notFound.back": "Back to home"
+  "notFound.back": "Back to home",
+  "profile.label": "Profile",
+  "profile.downloadCv": "Download CV",
+  "profile.contact": "Contact me",
+  "profile.location": "Location",
+  "profile.education": "Education",
+  "profile.languages": "Languages",
+  "home.about": "About me",
+  "home.experience": "Experience",
+  "home.journey": "See full journey →",
+  "home.projects": "Featured projects",
+  "home.viewCase": "View case",
+  "home.skills": "Skills",
+  "home.education": "Education & courses",
+  "home.courses": "Courses",
+  "home.freelance.title": "Have a project?",
+  "home.freelance.body": "I also take on specific projects: web applications, Docker deployments or server setup. Tell me what you need.",
+  "home.freelance.cta": "Get in touch"
 }

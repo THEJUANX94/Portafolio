@@ -26,6 +26,11 @@
     "languages": [
       { "name": { "es": "Español", "en": "Spanish" }, "level": { "es": "Nativo", "en": "Native" } },
       { "name": { "es": "Inglés", "en": "English" }, "level": { "es": "Intermedio-alto (B2)", "en": "Upper-intermediate (B2)" } }
-    ]
+    ],
+    "education": {
+      "degree": { "es": "Ingeniería de Sistemas y Computación", "en": "Systems and Computing Engineering" },
+      "institution": "Universidad Pedagógica y Tecnológica de Colombia (UPTC)",
+      "year": 2026
+    }
   }
 ]

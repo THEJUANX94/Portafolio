@@ -6,5 +6,22 @@
   "theme.toggle": "Cambiar tema claro u oscuro",
   "nav.skip": "Saltar al contenido",
   "notFound.title": "Página no encontrada",
-  "notFound.back": "Volver al inicio"
+  "notFound.back": "Volver al inicio",
+  "profile.label": "Perfil",
+  "profile.downloadCv": "Descargar CV",
+  "profile.contact": "Contactar",
+  "profile.location": "Ubicación",
+  "profile.education": "Formación",
+  "profile.languages": "Idiomas",
+  "home.about": "Sobre mí",
+  "home.experience": "Experiencia",
+  "home.journey": "Ver recorrido completo →",
+  "home.projects": "Proyectos destacados",
+  "home.viewCase": "Ver caso",
+  "home.skills": "Habilidades",
+  "home.education": "Educación y cursos",
+  "home.courses": "Cursos",
+  "home.freelance.title": "¿Tienes un proyecto?",
+  "home.freelance.body": "También acepto proyectos puntuales: aplicaciones web, despliegues con Docker o puesta a punto de servidores. Cuéntame qué necesitas.",
+  "home.freelance.cta": "Escríbeme"
 }

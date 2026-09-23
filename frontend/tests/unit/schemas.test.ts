@@ -52,6 +52,7 @@ const validProfile = {
   name: 'Juan', title: L('t'), summary: L('s'), location: L('l'), available: true, availabilityNote: L('n'),
   email: 'a@b.co', linkedin: 'https://linkedin.com/in/x', github: 'https://github.com/x',
   cv: { es: '/cv/a.pdf', en: '/cv/b.pdf' }, languages: [{ name: L('Español'), level: L('Nativo') }],
+  education: { degree: L('Ingeniería'), institution: 'UPTC', year: 2026 },
 };
 
 describe('profileSchema, skillSchema, courseSchema', () => {
@@ -62,5 +63,9 @@ describe('profileSchema, skillSchema, courseSchema', () => {
   });
   it('rechaza email inválido', () => {
     expect(profileSchema.safeParse({ ...validProfile, email: 'no-es-email' }).success).toBe(false);
+  });
+  it('exige la formación en el perfil', () => {
+    const { education: _omit, ...withoutEducation } = validProfile;
+    expect(profileSchema.safeParse(withoutEducation).success).toBe(false);
   });
 });

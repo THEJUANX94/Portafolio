@@ -18,6 +18,11 @@ export const profileSchema = z.object({
   github: z.url(),
   cv: z.object({ es: z.string().startsWith('/'), en: z.string().startsWith('/') }),
   languages: z.array(z.object({ name: localized, level: localized })),
+  education: z.object({
+    degree: localized,
+    institution: z.string().min(1),
+    year: z.number().int(),
+  }),
   photo: z.string().startsWith('/').optional(),
 });
 

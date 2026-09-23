@@ -11,6 +11,7 @@
   --text: #1e1433;
   --text-muted: #6b6480;
   --border: #e4dff0;
+  --success: #15803d;
   color-scheme: light;
 }
 
@@ -25,6 +26,7 @@
     --text: #ede9fe;
     --text-muted: #a79cc4;
     --border: #3a2a57;
+    --success: #4ade80;
     color-scheme: dark;
   }
 }
@@ -39,6 +41,7 @@
   --text: #ede9fe;
   --text-muted: #a79cc4;
   --border: #3a2a57;
+  --success: #4ade80;
   color-scheme: dark;
 }
 
@@ -52,6 +55,7 @@
   --color-text: var(--text);
   --color-text-muted: var(--text-muted);
   --color-border: var(--border);
+  --color-success: var(--success);
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
 }
 
