@@ -17,7 +17,7 @@ const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1200, height: 630 } });
 for (const lang of ['es', 'en']) {
   await page.goto(pathToFileURL(template).href);
-  await page.addStyleTag({ path: fontCss });
+  await page.addStyleTag({ url: pathToFileURL(fontCss).href });
   await page.evaluate(
     ({ name, title, availability, monogram }) => {
       document.getElementById('name').textContent = name;
