@@ -2,6 +2,7 @@
 
 **Date:** 2026-09-22
 **Status:** Approved
+**Enmiendas:** ver [ADR 0005](../../01-arquitectura/decisions/0005-metro-details-nativo-sin-react.md) (metro sin React, `<details>` nativo, colores de línea).
 
 ---
 

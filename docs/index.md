@@ -9,7 +9,7 @@ Documentación técnica del portafolio personal. Esta carpeta es la fuente de ve
 
 ## Estructura
 
-- [01-arquitectura/architecture.md](01-arquitectura/architecture.md) — Estructura del repo, capas, contenido, islas.
+- [01-arquitectura/architecture.md](01-arquitectura/architecture.md) — Estructura del repo, capas y contenido.
 - [01-arquitectura/decisions/](01-arquitectura/decisions/) — ADRs: decisiones técnicas y su contexto.
 - [02-desarrollo/setup-local.md](02-desarrollo/setup-local.md) — Cómo levantar el proyecto en local.
 - [02-desarrollo/variables-entorno.md](02-desarrollo/variables-entorno.md) — Variables de entorno.
