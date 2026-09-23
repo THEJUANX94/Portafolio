@@ -37,5 +37,20 @@
   "journey.projects": "Proyectos de esta etapa",
   "line.work": "Empleo",
   "line.projects": "Proyectos y hackatón",
-  "line.education": "Estudios"
+  "line.education": "Estudios",
+  "project.back": "Volver a proyectos",
+  "project.problem": "El problema",
+  "project.role": "Mi rol",
+  "project.solution": "La solución",
+  "project.result": "El resultado",
+  "project.images": "Capturas",
+  "project.tech": "Tecnologías",
+  "project.links": "Enlaces",
+  "project.repo": "Ver el código en GitHub",
+  "project.demo": "Ver la demo",
+  "project.anonymized": "Proyecto institucional: el código no es público y las capturas usan datos de prueba.",
+  "project.related": "En mi recorrido",
+  "project.more": "Más proyectos",
+  "project.prev": "Anterior",
+  "project.next": "Siguiente"
 }

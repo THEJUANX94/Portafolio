@@ -37,5 +37,20 @@
   "journey.projects": "Projects from this stage",
   "line.work": "Work",
   "line.projects": "Projects & hackathon",
-  "line.education": "Education"
+  "line.education": "Education",
+  "project.back": "Back to projects",
+  "project.problem": "The problem",
+  "project.role": "My role",
+  "project.solution": "The solution",
+  "project.result": "The result",
+  "project.images": "Screenshots",
+  "project.tech": "Technologies",
+  "project.links": "Links",
+  "project.repo": "View the code on GitHub",
+  "project.demo": "View the demo",
+  "project.anonymized": "Institutional project: the code is not public and screenshots use test data.",
+  "project.related": "In my journey",
+  "project.more": "More projects",
+  "project.prev": "Previous",
+  "project.next": "Next"
 }
