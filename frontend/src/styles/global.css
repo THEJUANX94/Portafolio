@@ -1,1 +1,69 @@
 @import "tailwindcss";
+
+/* Paleta morado + lavanda (spec: Tema y estilo). */
+:root {
+  --bg: #f7f5fc;
+  --surface: #ffffff;
+  --surface-soft: #ede9fe;
+  --primary: #4c1d95;
+  --on-primary: #ffffff;
+  --accent: #a78bfa;
+  --text: #1e1433;
+  --text-muted: #6b6480;
+  --border: #e4dff0;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #150d24;
+    --surface: #231638;
+    --surface-soft: #2e1d4a;
+    --primary: #a78bfa;
+    --on-primary: #150d24;
+    --accent: #c4b5fd;
+    --text: #ede9fe;
+    --text-muted: #a79cc4;
+    --border: #3a2a57;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #150d24;
+  --surface: #231638;
+  --surface-soft: #2e1d4a;
+  --primary: #a78bfa;
+  --on-primary: #150d24;
+  --accent: #c4b5fd;
+  --text: #ede9fe;
+  --text-muted: #a79cc4;
+  --border: #3a2a57;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-soft: var(--surface-soft);
+  --color-primary: var(--primary);
+  --color-on-primary: var(--on-primary);
+  --color-accent: var(--accent);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-border: var(--border);
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

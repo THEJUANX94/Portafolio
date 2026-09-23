@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { t } from '../i18n';
+---
+<BaseLayout lang="es" title={`404 — ${t('es', 'notFound.title')}`}>
+  <main id="main" class="mx-auto grid min-h-dvh max-w-xl place-content-center gap-8 px-4 text-center">
+    <p class="text-6xl font-bold text-primary">404</p>
+    <section>
+      <h1 class="text-2xl font-semibold">{t('es', 'notFound.title')}</h1>
+      <a class="mt-2 inline-block text-primary underline" href="/es/">{t('es', 'notFound.back')}</a>
+    </section>
+    <section lang="en">
+      <h2 class="text-2xl font-semibold">{t('en', 'notFound.title')}</h2>
+      <a class="mt-2 inline-block text-primary underline" href="/en/">{t('en', 'notFound.back')}</a>
+    </section>
+  </main>
+</BaseLayout>

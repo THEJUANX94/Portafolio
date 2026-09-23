@@ -10,7 +10,7 @@ const profile = defineCollection({ loader: file('src/data/profile.json'), schema
 
 const experience = defineCollection({
   loader: file('src/data/experience.json'),
-  // Referencias reales: el build falla si un slug de proyecto no existe.
+  // Referencias entre colecciones. Astro solo registra el error si un slug no existe; tests/unit/content.test.ts hace fallar la CI.
   schema: experienceBase
     .extend({ projects: z.array(reference('projects')) })
     .refine(endAfterStart, endAfterStartMsg),
