@@ -67,7 +67,7 @@ jobs:
           path: dist
       - name: Aviso si faltan credenciales
         if: env.HAS_CLOUDFLARE != 'true'
-        run: echo "::warning::Despliegue omitido: faltan los secretos CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID (ver docs/03-operacion/deploy.md)."
+        run: 'echo "::warning::Despliegue omitido - faltan los secretos CLOUDFLARE_API_TOKEN y CLOUDFLARE_ACCOUNT_ID (ver docs/03-operacion/deploy.md)."'
       - name: Publicar en Cloudflare Pages
         if: env.HAS_CLOUDFLARE == 'true'
         uses: cloudflare/wrangler-action@v4
