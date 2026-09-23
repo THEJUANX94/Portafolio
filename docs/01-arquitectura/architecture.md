@@ -12,7 +12,7 @@ Sitio estático público que presenta el perfil profesional de Juan Sebastián M
 ## 2. Estructura del repositorio
 
 ```
-frontend/   Astro 7 + React 19 (isla) + Tailwind 4 — único paquete en v1
+frontend/   Astro 7 + Tailwind 4 — único paquete en v1
 docs/       Esta documentación
 .github/    CI
 ```
@@ -29,7 +29,7 @@ graph TD
     I18n["src/i18n/ es.json · en.json"] --> Pages
     Lib["src/lib/ (i18n, fechas)"] --> Pages
     Pages --> Components["src/components/*.astro (HTML estático)"]
-    Pages --> Metro["components/metro/MetroMap.tsx (isla React — fase 3)"]
+    Pages --> Metro["components/MetroMap.astro (details nativo)"]
     Pages --> Dist["astro build → dist/"]
 ```
 
@@ -38,6 +38,7 @@ graph TD
 | `src/data/` | Contenido (perfil, experiencia, proyectos, habilidades, cursos). Único lugar que se edita para cambiar información. |
 | `src/lib/` | Lógica pura sin dependencias del runtime de Astro (solo `astro/zod`): idiomas, fechas, esquemas zod. Probada con Vitest. |
 | `src/content.config.ts` | Define colecciones con `file()` loader y agrega referencias entre colecciones. |
+| `src/lib/metro.ts` | Trazado del metro: orden de estaciones, líneas presentes y tramos por fila. |
 | `src/i18n/` | Textos de interfaz (botones, etiquetas). Mismas claves en ambos idiomas. |
 | `src/layouts/` | `BaseLayout`: `<head>`, SEO, `hreflang`, script anti-parpadeo del tema. |
 | `src/components/` | Componentes Astro sin JS de cliente, salvo scripts mínimos (tema). |

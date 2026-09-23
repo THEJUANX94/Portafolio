@@ -6,7 +6,7 @@ tags: [adr, astro, frontend]
 # ADR 0001: Astro como generador de sitio estático
 
 ## Estado
-Aceptado.
+Aceptado. El punto 2 (React como isla) fue reemplazado por [ADR 0005](0005-metro-details-nativo-sin-react.md): hoy no hay React.
 
 ## Contexto
 

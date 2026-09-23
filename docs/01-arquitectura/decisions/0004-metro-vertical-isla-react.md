@@ -6,7 +6,7 @@ tags: [adr, ux, react, experiencia]
 # ADR 0004: Experiencia como mapa de metro vertical en una isla React
 
 ## Estado
-Aceptado (implementación en fase 3).
+Aceptado. El punto 3 (isla React) fue reemplazado por [ADR 0005](0005-metro-details-nativo-sin-react.md).
 
 ## Contexto
 

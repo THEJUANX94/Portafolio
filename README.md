@@ -6,7 +6,7 @@ Portafolio web bilingüe (español / inglés) para reclutadores: perfil, experie
 
 | Capa | Tecnología |
 | :--- | :--- |
-| Frontend | Astro 7 + React 19 (solo el mapa de experiencia) + Tailwind 4 |
+| Frontend | Astro 7 + Tailwind 4 (sin JS de framework en el cliente) |
 | Contenido | JSON validado con zod (content collections) |
 | Backend | Ninguno en v1 (ver [ADR 0002](docs/01-arquitectura/decisions/0002-sin-backend-v1.md)) |
 | Pruebas | Vitest + Playwright |
