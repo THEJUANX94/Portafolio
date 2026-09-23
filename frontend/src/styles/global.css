@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "@fontsource-variable/plus-jakarta-sans";
 
 /* Paleta morado + lavanda (spec: Tema y estilo). */
 :root {
@@ -68,7 +69,7 @@
   --color-line-work: var(--line-work);
   --color-line-projects: var(--line-projects);
   --color-line-education: var(--line-education);
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans Variable", ui-sans-serif, system-ui, sans-serif;
 }
 
 body {

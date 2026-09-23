@@ -24,9 +24,6 @@ const alternates = LOCALES.map((l) => ({ lang: l, href: new URL(switchLocalePath
     {!noindex && <link rel="canonical" href={canonical.href} />}
     {!noindex && alternates.map((a) => <link rel="alternate" hreflang={a.lang} href={a.href} />)}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <script is:inline>
       try {
         const saved = localStorage.getItem('theme');
