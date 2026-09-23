@@ -20,7 +20,18 @@ export function formatMonth(ym: string, locale: Locale): string {
   return `${MONTHS[locale][month - 1]} ${year}`;
 }
 
-export function formatRange(start: string, end: string | null, locale: Locale): string {
+export function formatRange(
+  start: string,
+  end: string | null,
+  locale: Locale,
+  approximate = false,
+): string {
+  if (approximate) {
+    const startYear = parse(start).year;
+    if (end === null) return `${startYear} – ${PRESENT[locale]}`;
+    const endYear = parse(end).year;
+    return startYear === endYear ? `${startYear}` : `${startYear} – ${endYear}`;
+  }
   const to = end === null ? PRESENT[locale] : formatMonth(end, locale);
   return `${formatMonth(start, locale)} – ${to}`;
 }

@@ -21,6 +21,21 @@ describe('formatRange', () => {
     expect(formatRange('2025-10', null, 'es')).toBe('oct 2025 – hoy');
     expect(formatRange('2025-10', null, 'en')).toBe('Oct 2025 – present');
   });
+
+  describe('approximate', () => {
+    it('muestra solo años cuando difieren', () => {
+      expect(formatRange('2022-02', '2023-03', 'es', true)).toBe('2022 – 2023');
+      expect(formatRange('2022-02', '2023-03', 'en', true)).toBe('2022 – 2023');
+    });
+    it('un solo año si inicio y fin coinciden', () => {
+      expect(formatRange('2022-02', '2022-11', 'es', true)).toBe('2022');
+      expect(formatRange('2022-02', '2022-11', 'en', true)).toBe('2022');
+    });
+    it('fin null = hoy / present, solo el año de inicio', () => {
+      expect(formatRange('2022-02', null, 'es', true)).toBe('2022 – hoy');
+      expect(formatRange('2022-02', null, 'en', true)).toBe('2022 – present');
+    });
+  });
 });
 
 describe('monthsBetween', () => {

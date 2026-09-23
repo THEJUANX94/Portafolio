@@ -15,7 +15,8 @@ const months = monthsBetween(entry.start, entry.end ?? toYearMonth(new Date()));
   <p class="text-lg font-semibold">{entry.role[lang]}</p>
   <p class="text-text-muted">{entry.organization[lang]}</p>
   <p class="mt-1 text-sm font-medium text-primary">
-    {formatRange(entry.start, entry.end, lang)} · {formatDuration(months, lang)}
+    {formatRange(entry.start, entry.end, lang, entry.approximate)}
+    {!entry.approximate && <> · {formatDuration(months, lang)}</>}
   </p>
   <ul class="mt-4 list-disc space-y-2 pl-5">
     {entry.highlights.slice(0, 3).map((h) => <li>{h[lang]}</li>)}

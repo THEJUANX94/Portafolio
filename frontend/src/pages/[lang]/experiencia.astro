@@ -26,6 +26,7 @@ const stations: StationView[] = (await getCollection('experience')).map((e) => (
   line: e.data.line,
   start: e.data.start,
   end: e.data.end,
+  approximate: e.data.approximate,
   role: e.data.role,
   organization: e.data.organization,
   highlights: e.data.highlights,

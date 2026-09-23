@@ -31,6 +31,7 @@ const experience = (await getCollection('experience')).map((e) => ({
   organization: e.data.organization,
   start: e.data.start,
   end: e.data.end,
+  approximate: e.data.approximate,
   projects: e.data.projects.map((ref) => ref.id),
 }));
 const related = relatedExperience(experience, slug);
@@ -143,7 +144,7 @@ const external = 'text-primary underline underline-offset-4 hover:no-underline';
                 {related.map((e) => (
                   <li>
                     <a href={`/${lang}/experiencia/`} class={external}>{e.role[lang]}</a>
-                    <span class="text-text-muted"> · {e.organization[lang]} · {formatRange(e.start, e.end, lang)}</span>
+                    <span class="text-text-muted"> · {e.organization[lang]} · {formatRange(e.start, e.end, lang, e.approximate)}</span>
                   </li>
                 ))}
               </ul>

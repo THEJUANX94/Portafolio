@@ -36,6 +36,7 @@ export const experienceBase = z.object({
   start: yearMonth,
   end: yearMonth.nullable(),
   location: localized.optional(),
+  approximate: z.boolean().optional(),
   highlights: z.array(localized),
   tech: z.array(z.string()),
   projects: z.array(z.string()),

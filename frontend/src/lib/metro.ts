@@ -7,6 +7,7 @@ export interface MetroInput {
   line: Line;
   start: string;
   end: string | null;
+  approximate?: boolean;
 }
 
 export interface Track {

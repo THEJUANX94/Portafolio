@@ -46,6 +46,11 @@ describe('experienceSchema', () => {
   it('rechaza fin anterior al inicio', () => {
     expect(experienceSchema.safeParse({ ...exp, start: '2026-01', end: '2025-12' }).success).toBe(false);
   });
+  it('acepta approximate opcional (booleano o ausente)', () => {
+    expect(experienceSchema.safeParse({ ...exp, approximate: true }).success).toBe(true);
+    expect(experienceSchema.safeParse(exp).success).toBe(true);
+    expect(experienceSchema.safeParse({ ...exp, approximate: 'sí' }).success).toBe(false);
+  });
 });
 
 const validProfile = {
