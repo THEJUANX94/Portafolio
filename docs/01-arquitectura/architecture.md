@@ -47,6 +47,7 @@ graph TD
 | `src/lib/home.ts` | Selección de datos de la principal: orden, proyectos destacados, empleo más reciente, iniciales. |
 | `src/components/` (principal) | `ProfileCard`, `Section`, `ExperienceSummary`, `ProjectCard`, `SkillGroup`, `EducationList`, `ContactCTA`. Reciben `lang` y datos ya resueltos; sin JS de cliente. |
 | `src/lib/projects.ts` | Detalle de proyecto: vecinos por `order` y etapas de experiencia relacionadas. |
+| `src/lib/seo.ts` | Locale de Open Graph por idioma (`ogLocale`) y JSON-LD `schema.org/Person` (`personJsonLd`) para la principal. |
 
 ## 4. Idiomas
 
@@ -60,6 +61,14 @@ Todo texto visible es `{ es, en }`. Reglas que se validan (el build falla por es
 
 ## 6. Tema
 
-Variables CSS en `:root` (claro) y `[data-theme="dark"]` / `prefers-color-scheme: dark` (oscuro), expuestas a Tailwind con `@theme inline` (`bg-primary`, `text-text-muted`, …). La elección manual se guarda en `localStorage["theme"]`.
+Variables CSS en `:root` (claro) y `[data-theme="dark"]` / `prefers-color-scheme: dark` (oscuro), expuestas a Tailwind con `@theme inline` (`bg-primary`, `text-text-muted`, …). La elección manual se guarda en `localStorage["theme"]`. El botón (`ThemeToggle.astro`) muestra ícono de sol o luna según el tema activo y expone `aria-pressed`.
+
+## 7. SEO
+
+`BaseLayout.astro` emite, para cada página: Open Graph (`og:type`, `og:title`, `og:description`, `og:image` de 1200×630, `og:locale` + `og:locale:alternate`), Twitter Card (`summary_large_image`) y `hreflang` `es`/`en` más `x-default` (apunta a `/es/`). La imagen OG es una por idioma (`/img/og-{lang}.png`), generada con Playwright desde `og/og.html` (`pnpm og`, ver `frontend/scripts/build-og.mjs`); se autogenera a partir de `src/data/profile.json`, así que hay que regenerarla si ese archivo cambia.
+
+La principal (`[lang]/index.astro`) agrega JSON-LD `schema.org/Person` (`personJsonLd` en `src/lib/seo.ts`) y pasa `type="profile"` al layout; el detalle de proyecto pasa `type="article"`.
+
+`src/pages/robots.txt.ts` es un endpoint estático (`APIRoute`) que apunta a `/sitemap-index.xml` usando `Astro.site`. El sitemap (`@astrojs/sitemap`) usa códigos de idioma `es`/`en` (no `es-CO`/`en-US`) para que coincidan con los `hreflang` que emite el layout.
 
 Última actualización: 2026-09-22

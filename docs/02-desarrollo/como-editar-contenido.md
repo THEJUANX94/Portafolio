@@ -33,4 +33,8 @@ Reemplazar el PDF en `frontend/public/cv/` manteniendo el nombre, o actualizar `
 
 El PDF en español se mantiene manualmente. El PDF en inglés se genera desde `cv/cv-en.html`: editar ese archivo y correr `pnpm cv` (desde `frontend/`) para regenerar `frontend/public/cv/CV-Juan-Sebastian-Martinez-EN.pdf`.
 
+## Vista previa al compartir (Open Graph)
+
+Si cambias nombre, título o disponibilidad en `profile.json`, regenera las imágenes de vista previa con `pnpm og` (desde `frontend/`).
+
 Última actualización: 2026-09-22

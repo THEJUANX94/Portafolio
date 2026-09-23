@@ -20,4 +20,6 @@ El build (`pnpm build` en `frontend/`) produce `frontend/dist/`, un sitio estát
 
 Configuración común: directorio raíz `frontend`, comando `pnpm build`, salida `dist`, variable `SITE_URL`.
 
+Antes del primer despliegue, definir `SITE_URL` con el dominio final; sin eso las vistas previas en LinkedIn/WhatsApp apuntan a localhost.
+
 Última actualización: 2026-09-22
