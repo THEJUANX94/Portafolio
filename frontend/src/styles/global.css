@@ -210,6 +210,19 @@ details[name="metro"][open] [data-station-body] { animation: rise-in 0.3s ease-o
   }
 }
 
+/* ---------- Cambio de tema en cascada (ver ThemeToggle.astro) ---------- */
+html.theme-cascade *,
+html.theme-cascade *::before,
+html.theme-cascade *::after {
+  transition-property: background-color, color, border-color, fill, stroke, box-shadow, outline-color;
+  transition-duration: 0.35s;
+  transition-timing-function: ease;
+  transition-delay: calc(var(--cascade-step, 0) * 90ms);
+}
+html.theme-cascade body {
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
