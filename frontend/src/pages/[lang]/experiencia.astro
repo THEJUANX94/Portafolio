@@ -1,0 +1,62 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LangSwitch from '../../components/LangSwitch.astro';
+import ThemeToggle from '../../components/ThemeToggle.astro';
+import MetroMap, { type StationView } from '../../components/MetroMap.astro';
+import { LOCALES, type Locale } from '../../lib/i18n';
+import { buildMetro } from '../../lib/metro';
+import { toYearMonth } from '../../lib/dates';
+import { t } from '../../i18n';
+
+export function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Locale;
+const now = toYearMonth(new Date());
+
+const profileEntry = await getEntry('profile', 'main');
+if (!profileEntry) throw new Error('Falta la entrada "main" en src/data/profile.json');
+
+const projectTitles = new Map((await getCollection('projects')).map((p) => [p.id, p.data.title]));
+
+const stations: StationView[] = (await getCollection('experience')).map((e) => ({
+  id: e.id,
+  line: e.data.line,
+  start: e.data.start,
+  end: e.data.end,
+  role: e.data.role,
+  organization: e.data.organization,
+  highlights: e.data.highlights,
+  tech: e.data.tech,
+  projects: e.data.projects.map((ref) => {
+    const title = projectTitles.get(ref.id);
+    if (!title) throw new Error(`experience "${e.id}" referencia el proyecto inexistente "${ref.id}"`);
+    return { id: ref.id, title };
+  }),
+}));
+
+const layout = buildMetro(stations, now);
+---
+<BaseLayout lang={lang} title={`${t(lang, 'journey.title')} — Juan Sebastián Martínez`} description={t(lang, 'journey.description')}>
+  <div class="mx-auto max-w-3xl px-4 py-6 lg:py-10">
+    <header class="flex items-center justify-between gap-2">
+      <a href={`/${lang}/`} data-back-link class="font-semibold text-primary underline-offset-4 hover:underline">
+        <span aria-hidden="true">← </span>{t(lang, 'journey.back')}
+      </a>
+      <div class="flex gap-2">
+        <LangSwitch lang={lang} />
+        <ThemeToggle lang={lang} />
+      </div>
+    </header>
+
+    <main id="main" class="mt-8">
+      <h1 class="text-3xl font-bold text-primary">{t(lang, 'journey.title')}</h1>
+      <p class="mt-2 text-text-muted">{t(lang, 'journey.intro')}</p>
+      <div class="mt-8">
+        <MetroMap lang={lang} layout={layout} now={now} contactHref={`mailto:${profileEntry.data.email}`} />
+      </div>
+    </main>
+  </div>
+</BaseLayout>
