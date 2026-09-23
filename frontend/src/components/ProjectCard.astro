@@ -11,7 +11,7 @@ interface Props {
 const { lang, id, project } = Astro.props;
 const cover = project.images[0];
 ---
-<article data-project-card class="relative flex flex-col overflow-hidden rounded-xl border border-border bg-bg transition hover:border-accent">
+<article data-project-card class="relative flex flex-col overflow-hidden rounded-xl border border-border bg-bg transition hover:border-accent focus-within:border-accent has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-primary">
   {
     cover ? (
       <img src={cover.src} alt={cover.alt[lang]} loading="lazy" class="aspect-video w-full object-cover" />
@@ -21,7 +21,7 @@ const cover = project.images[0];
   }
   <div class="flex flex-1 flex-col p-4">
     <h3 class="font-semibold">
-      <a href={`/${lang}/proyectos/${id}/`} class="after:absolute after:inset-0 focus-visible:outline-2 focus-visible:outline-primary">
+      <a href={`/${lang}/proyectos/${id}/`} class="after:absolute after:inset-0 focus-visible:outline-none">
         {project.title[lang]}
       </a>
     </h3>

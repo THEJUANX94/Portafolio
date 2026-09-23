@@ -13,7 +13,7 @@ interface Props {
 const { lang, profile: p } = Astro.props;
 const button = 'rounded-lg px-4 py-2.5 text-center font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary';
 ---
-<aside
+<header
   aria-label={t(lang, 'profile.label')}
   data-profile-card
   class="rounded-2xl border border-border bg-surface p-6 lg:sticky lg:top-6"
@@ -26,7 +26,7 @@ const button = 'rounded-lg px-4 py-2.5 text-center font-semibold focus-visible:o
   <div class="mt-2 flex flex-col items-center text-center">
     {
       p.photo ? (
-        <img src={p.photo} alt={p.name} width="112" height="112" class="size-28 rounded-full object-cover" />
+        <img src={p.photo} alt="" width="112" height="112" class="size-28 rounded-full object-cover" />
       ) : (
         <div aria-hidden="true" class="grid size-28 place-items-center rounded-full bg-surface-soft text-3xl font-bold text-primary">
           {initials(p.name)}
@@ -70,7 +70,17 @@ const button = 'rounded-lg px-4 py-2.5 text-center font-semibold focus-visible:o
   </dl>
 
   <ul class="mt-6 flex justify-center gap-6 text-sm font-semibold">
-    <li><a href={p.linkedin} target="_blank" rel="me noopener" class="text-primary underline-offset-4 hover:underline">LinkedIn</a></li>
-    <li><a href={p.github} target="_blank" rel="me noopener" class="text-primary underline-offset-4 hover:underline">GitHub</a></li>
+    <li>
+      <a href={p.linkedin} target="_blank" rel="me noopener" class="text-primary underline-offset-4 hover:underline">
+        {t(lang, 'profile.linkedin')}
+        <span class="sr-only"> {t(lang, 'profile.newTab')}</span>
+      </a>
+    </li>
+    <li>
+      <a href={p.github} target="_blank" rel="me noopener" class="text-primary underline-offset-4 hover:underline">
+        {t(lang, 'profile.github')}
+        <span class="sr-only"> {t(lang, 'profile.newTab')}</span>
+      </a>
+    </li>
   </ul>
-</aside>
+</header>

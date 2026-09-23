@@ -61,4 +61,3 @@ Todo texto visible es `{ es, en }`. Reglas que se validan (el build falla por es
 Variables CSS en `:root` (claro) y `[data-theme="dark"]` / `prefers-color-scheme: dark` (oscuro), expuestas a Tailwind con `@theme inline` (`bg-primary`, `text-text-muted`, …). La elección manual se guarda en `localStorage["theme"]`.
 
 Última actualización: 2026-09-22
-
