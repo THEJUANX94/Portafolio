@@ -92,10 +92,137 @@ body {
 .rise-in { animation: rise-in 0.45s ease-out both; }
 details[name="metro"][open] [data-station-body] { animation: rise-in 0.3s ease-out both; }
 
+/* ---------- Transiciones entre páginas (View Transitions nativas) ---------- */
+@view-transition {
+  navigation: auto;
+}
+
+@keyframes vt-fade-out {
+  to { opacity: 0; }
+}
+@keyframes vt-fade-up {
+  from { opacity: 0; translate: 0 10px; }
+}
+
+::view-transition-old(root) {
+  animation: vt-fade-out 0.2s ease both;
+}
+::view-transition-new(root) {
+  animation: vt-fade-up 0.3s ease-out both;
+}
+::view-transition-group(*) {
+  animation-duration: 0.4s;
+  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* ---------- Detalles de hover (solo con mouse) ---------- */
+.link-grow {
+  text-decoration: none;
+  background-image:
+    linear-gradient(currentColor, currentColor),
+    linear-gradient(color-mix(in srgb, currentColor 35%, transparent), color-mix(in srgb, currentColor 35%, transparent));
+  background-position: 0 100%, 0 100%;
+  background-size: 0 2px, 100% 1px;
+  background-repeat: no-repeat;
+  padding-bottom: 2px;
+}
+
+@media (hover: hover) {
+  .hover-lift {
+    transition: translate 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .hover-lift:hover {
+    translate: 0 -4px;
+    box-shadow: 0 12px 28px -12px color-mix(in srgb, var(--primary) 45%, transparent);
+  }
+
+  .hover-arrow .arrow {
+    display: inline-block;
+    transition: translate 0.2s ease;
+  }
+  .hover-arrow:hover .arrow {
+    translate: 4px 0;
+  }
+
+  .hover-arrow-back .arrow {
+    display: inline-block;
+    transition: translate 0.2s ease;
+  }
+  .hover-arrow-back:hover .arrow {
+    translate: -4px 0;
+  }
+
+  .link-grow {
+    transition: background-size 0.25s ease;
+  }
+  .link-grow:hover {
+    background-size: 100% 2px, 100% 1px;
+  }
+
+  .chip {
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  }
+  .chip:hover {
+    background-color: var(--surface-soft);
+    border-color: var(--accent);
+    color: var(--primary);
+  }
+
+  .station-row .station-dot {
+    transition: scale 0.2s ease, box-shadow 0.2s ease;
+  }
+  .station-row:hover .station-dot {
+    scale: 1.25;
+    box-shadow: 0 0 0 5px var(--surface-soft);
+  }
+
+  .theme-spin svg {
+    transition: rotate 0.4s ease, scale 0.4s ease;
+  }
+  .theme-spin:hover svg {
+    rotate: -25deg;
+    scale: 1.1;
+  }
+
+  .avatar-ring {
+    transition: box-shadow 0.3s ease, scale 0.3s ease;
+  }
+  .avatar-ring:hover {
+    box-shadow: 0 0 0 4px var(--surface), 0 0 0 7px var(--accent);
+    scale: 1.03;
+  }
+
+  .shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .shine::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 30%, rgb(255 255 255 / 0.28) 50%, transparent 70%);
+    translate: -100% 0;
+    pointer-events: none;
+  }
+  .shine:hover::after {
+    transition: translate 0.6s ease;
+    translate: 100% 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  @view-transition {
+    navigation: none;
+  }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
   }
 }
