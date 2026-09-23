@@ -21,5 +21,6 @@ tags: [portafolio, changelog]
 - **2026-09-22** — Estación de estudios en el metro: Ingeniería de Sistemas y Computación, UPTC, feb 2021 – ago 2026 (graduado). La línea gris de estudios ya aparece.
 - **2026-09-22** — Fase 7 ([ADR 0006](01-arquitectura/decisions/0006-hosting-cloudflare-pages.md), [deploy.md](03-operacion/deploy.md)): hosting en Cloudflare Pages, proyecto `jsmartinez-dev` (https://jsmartinez-dev.pages.dev). Job `deploy` en la CI publica el mismo `dist/` que pasó las pruebas (Direct Upload con `wrangler-action`); `SITE_URL` fijado en el workflow; cabeceras de seguridad y caché en `frontend/public/_headers`. El repo duplicado `THEJUANX94/portfolio` queda para borrar por el dueño (el token de `gh` no tiene el permiso `delete_repo`).
 - Pendiente: foto de perfil; capturas anonimizadas; secretos de Cloudflare en GitHub para el primer despliegue.
+- **2026-09-23** — Animaciones y micro-interacciones ([spec](superpowers/specs/2026-09-23-animaciones-design.md), [plan](superpowers/plans/2026-09-23-animaciones.md)): transiciones nativas entre páginas (`@view-transition`, fundido + título de tarjeta/proyecto y "Experiencia"/"Mi recorrido" como elemento compartido) y 8 detalles de hover en `global.css`, todo dentro de `@media (hover: hover)` y desactivado con `prefers-reduced-motion`. 5 pruebas e2e nuevas (`animations.spec.ts`); axe y el resto de la suite (53 en total) siguen en verde.
 
-Última actualización: 2026-09-22
+Última actualización: 2026-09-23

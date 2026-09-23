@@ -71,4 +71,14 @@ La principal (`[lang]/index.astro`) agrega JSON-LD `schema.org/Person` (`personJ
 
 `src/pages/robots.txt.ts` es un endpoint estático (`APIRoute`) que apunta a `/sitemap-index.xml` usando `Astro.site`. El sitemap (`@astrojs/sitemap`) usa códigos de idioma `es`/`en` (no `es-CO`/`en-US`) para que coincidan con los `hreflang` que emite el layout.
 
-Última actualización: 2026-09-22
+## 8. Animaciones
+
+Transiciones nativas **entre documentos** (`@view-transition { navigation: auto; }` en `global.css`), sin `ClientRouter` ni JS propio: el fundido (`::view-transition-old/new(root)`) corre en cada navegación y el navegador anima automáticamente cualquier elemento que comparta `view-transition-name` entre la página de salida y la de llegada.
+
+Nombres compartidos:
+- `project-title-<id>`: `<h3>` de la tarjeta en `ProjectCard.astro` ↔ `<h1>` de `[lang]/proyectos/[slug].astro`.
+- `journey-title`: `<h2>` de la sección "Experiencia" en la principal (`Section` con prop `vtName`) ↔ `<h1>` de `[lang]/experiencia.astro`.
+
+Los 8 detalles de hover (tarjetas que se elevan, flecha que avanza, subrayado que crece, etiquetas de tecnología, punto del metro, ícono de tema, anillo de foto, destello del CV) son utilidades CSS en `global.css`, dentro de `@media (hover: hover)` para no activarse en táctil. Con `prefers-reduced-motion: reduce` se desactivan tanto las transiciones de página (`navigation: none`) como las animaciones `::view-transition-*` y las transiciones de hover (regla existente que pone `transition-duration: 0.01ms !important`).
+
+Última actualización: 2026-09-23
