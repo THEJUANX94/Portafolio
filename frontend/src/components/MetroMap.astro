@@ -42,7 +42,7 @@ const railWidth = `${Math.max(lines.length, 1) * 1.5}rem`;
 
   <ol class="relative">
     <!-- Terminal: todas las líneas confluyen aquí -->
-    <li class="relative grid grid-cols-[var(--rail)_minmax(0,1fr)] gap-3 pb-4">
+    <li class="relative grid grid-cols-[var(--rail)_minmax(0,1fr)] gap-3">
       <div aria-hidden="true" class="relative">
         {lines.length > 1 && (
           <span class="absolute h-1.5 rounded-full bg-line-work" style={`top: calc(var(--dot) - 0.1875rem); left: ${col(0)}; width: calc(${lines.length - 1} * 1.5rem);`} />
@@ -52,7 +52,7 @@ const railWidth = `${Math.max(lines.length, 1) * 1.5}rem`;
         ))}
         <span class="absolute size-5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-line-work ring-4 ring-bg" style={`left: ${col(0)}; top: var(--dot);`} />
       </div>
-      <div class="flex min-h-14 flex-wrap items-center gap-x-3 gap-y-1">
+      <div class="mb-4 flex min-h-14 flex-wrap items-center gap-x-3 gap-y-1">
         <span class="font-semibold">{t(lang, 'journey.next')}</span>
         <a href={contactHref} data-metro-next class="font-semibold text-primary underline underline-offset-4 hover:no-underline">
           {t(lang, 'journey.nextCta')}
@@ -65,7 +65,7 @@ const railWidth = `${Math.max(lines.length, 1) * 1.5}rem`;
         const stationCol = lines.indexOf(entry.line);
         const months = monthsBetween(entry.start, entry.end ?? now);
         return (
-          <li class="relative grid grid-cols-[var(--rail)_minmax(0,1fr)] gap-3 pb-4" data-station-row>
+          <li class="relative grid grid-cols-[var(--rail)_minmax(0,1fr)] gap-3" data-station-row>
             <div aria-hidden="true" class="relative">
               {lines.map((line, i) => (
                 <>
@@ -88,7 +88,7 @@ const railWidth = `${Math.max(lines.length, 1) * 1.5}rem`;
               open={rowIndex === 0}
               data-station
               data-line={entry.line}
-              class:list={['group rounded-xl border border-l-4 bg-surface open:shadow-sm', BORDER[entry.line]]}
+              class:list={['group mb-4 rounded-xl border border-l-4 bg-surface open:shadow-sm', BORDER[entry.line]]}
             >
               <summary class="flex min-h-14 cursor-pointer list-none items-center gap-3 rounded-xl px-4 py-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary [&::-webkit-details-marker]:hidden">
                 <span class="min-w-0 flex-1">
