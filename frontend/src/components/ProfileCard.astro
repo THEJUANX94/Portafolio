@@ -26,9 +26,9 @@ const button = 'rounded-lg px-4 py-2.5 text-center font-semibold focus-visible:o
   <div class="mt-2 flex flex-col items-center text-center">
     {
       p.photo ? (
-        <img src={p.photo} alt="" width="112" height="112" class="size-28 rounded-full object-cover" />
+        <img src={p.photo} alt="" width="112" height="112" class="avatar-ring size-28 rounded-full object-cover" />
       ) : (
-        <div aria-hidden="true" class="grid size-28 place-items-center rounded-full bg-surface-soft text-3xl font-bold text-primary">
+        <div aria-hidden="true" class="avatar-ring grid size-28 place-items-center rounded-full bg-surface-soft text-3xl font-bold text-primary">
           {initials(p.name)}
         </div>
       )
@@ -46,7 +46,7 @@ const button = 'rounded-lg px-4 py-2.5 text-center font-semibold focus-visible:o
   </div>
 
   <div class="mt-6 flex flex-col gap-2">
-    <a href={p.cv[lang]} download data-cv-link class:list={[button, 'bg-primary text-on-primary hover:opacity-90']}>
+    <a href={p.cv[lang]} download data-cv-link class:list={[button, 'shine bg-primary text-on-primary hover:opacity-90']}>
       {t(lang, 'profile.downloadCv')}
     </a>
     <a href={`mailto:${p.email}`} data-contact-link class:list={[button, 'border border-primary text-primary hover:bg-surface-soft']}>
@@ -71,13 +71,13 @@ const button = 'rounded-lg px-4 py-2.5 text-center font-semibold focus-visible:o
 
   <ul class="mt-6 flex justify-center gap-6 text-sm font-semibold">
     <li>
-      <a href={p.linkedin} target="_blank" rel="me noopener" class="text-primary underline-offset-4 hover:underline">
+      <a href={p.linkedin} target="_blank" rel="me noopener" class="link-grow text-primary">
         {t(lang, 'profile.linkedin')}
         <span class="sr-only"> {t(lang, 'profile.newTab')}</span>
       </a>
     </li>
     <li>
-      <a href={p.github} target="_blank" rel="me noopener" class="text-primary underline-offset-4 hover:underline">
+      <a href={p.github} target="_blank" rel="me noopener" class="link-grow text-primary">
         {t(lang, 'profile.github')}
         <span class="sr-only"> {t(lang, 'profile.newTab')}</span>
       </a>

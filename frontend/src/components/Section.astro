@@ -4,8 +4,9 @@ interface Props {
   title: string;
   highlight?: boolean;
   delay?: number;
+  vtName?: string;
 }
-const { id, title, highlight = false, delay = 0 } = Astro.props;
+const { id, title, highlight = false, delay = 0, vtName } = Astro.props;
 ---
 <section
   id={id}
@@ -16,7 +17,7 @@ const { id, title, highlight = false, delay = 0 } = Astro.props;
   ]}
   style={`animation-delay: ${delay}ms`}
 >
-  <h2 id={`${id}-title`} class="text-xl font-bold text-primary">{title}</h2>
+  <h2 id={`${id}-title`} class="text-xl font-bold text-primary" style={vtName ? `view-transition-name: ${vtName}` : undefined}>{title}</h2>
   <div class="mt-4">
     <slot />
   </div>

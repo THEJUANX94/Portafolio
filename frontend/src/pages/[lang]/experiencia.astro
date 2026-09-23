@@ -43,7 +43,7 @@ const layout = buildMetro(stations, now);
 <BaseLayout lang={lang} title={`${t(lang, 'journey.title')} — ${profileEntry.data.name}`} description={t(lang, 'journey.description')}>
   <div class="mx-auto max-w-3xl px-4 py-6 lg:py-10">
     <header class="flex items-center justify-between gap-2">
-      <a href={`/${lang}/`} data-back-link class="font-semibold text-primary underline-offset-4 hover:underline">
+      <a href={`/${lang}/`} data-back-link class="link-grow font-semibold text-primary">
         <span aria-hidden="true">← </span>{t(lang, 'journey.back')}
       </a>
       <div class="flex gap-2">
@@ -53,7 +53,7 @@ const layout = buildMetro(stations, now);
     </header>
 
     <main id="main" class="mt-8">
-      <h1 class="text-3xl font-bold text-primary">{t(lang, 'journey.title')}</h1>
+      <h1 class="text-3xl font-bold text-primary" style="view-transition-name: journey-title">{t(lang, 'journey.title')}</h1>
       <p class="mt-2 text-text-muted">{t(lang, 'journey.intro')}</p>
       <div class="mt-8">
         <MetroMap lang={lang} layout={layout} now={now} contactHref={`mailto:${profileEntry.data.email}`} />

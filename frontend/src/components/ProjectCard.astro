@@ -11,7 +11,7 @@ interface Props {
 const { lang, id, project } = Astro.props;
 const cover = project.images[0];
 ---
-<article data-project-card class="relative flex flex-col overflow-hidden rounded-xl border border-border bg-bg transition hover:border-accent focus-within:border-accent has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-primary">
+<article data-project-card class="hover-lift hover-arrow relative flex flex-col overflow-hidden rounded-xl border border-border bg-bg transition hover:border-accent focus-within:border-accent has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-primary">
   {
     cover ? (
       <img src={cover.src} alt={cover.alt[lang]} loading="lazy" class="aspect-video w-full object-cover" />
@@ -20,7 +20,7 @@ const cover = project.images[0];
     )
   }
   <div class="flex flex-1 flex-col p-4">
-    <h3 class="font-semibold">
+    <h3 class="font-semibold" style={`view-transition-name: project-title-${id}`}>
       <a href={`/${lang}/proyectos/${id}/`} class="after:absolute after:inset-0 focus-visible:outline-none">
         {project.title[lang]}
       </a>
@@ -28,8 +28,8 @@ const cover = project.images[0];
     <p class="mt-1 text-sm text-text-muted">{project.tagline[lang]}</p>
     <p class="mt-3 text-sm">{project.result[lang]}</p>
     <ul class="mt-3 flex flex-wrap gap-1.5">
-      {project.tech.slice(0, 4).map((tech) => <li class="rounded-full bg-surface-soft px-2 py-0.5 text-xs">{tech}</li>)}
+      {project.tech.slice(0, 4).map((tech) => <li class="chip rounded-full border border-transparent bg-surface-soft px-2 py-0.5 text-xs">{tech}</li>)}
     </ul>
-    <span aria-hidden="true" class="mt-auto pt-4 text-sm font-semibold text-primary">{t(lang, 'home.viewCase')} →</span>
+    <span aria-hidden="true" class="mt-auto pt-4 text-sm font-semibold text-primary">{t(lang, 'home.viewCase')} <span class="arrow">→</span></span>
   </div>
 </article>

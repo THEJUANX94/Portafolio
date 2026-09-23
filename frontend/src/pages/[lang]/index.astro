@@ -41,7 +41,7 @@ const courses = byOrder((await getCollection('courses')).map((e) => e.data));
         <p class="text-lg leading-relaxed">{profile.summary[lang]}</p>
       </Section>
 
-      <Section id="experience" title={t(lang, 'home.experience')} highlight delay={60}>
+      <Section id="experience" title={t(lang, 'home.experience')} highlight delay={60} vtName="journey-title">
         <ExperienceSummary lang={lang} entry={current} />
       </Section>
 

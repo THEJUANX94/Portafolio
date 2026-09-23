@@ -56,7 +56,7 @@ const railWidth = `${Math.max(lines.length, 1) * 1.5}rem`;
       </div>
       <div class="mb-4 flex min-h-14 flex-wrap items-center gap-x-3 gap-y-1">
         <span class="font-semibold">{t(lang, 'journey.next')}</span>
-        <a href={contactHref} data-metro-next class="font-semibold text-primary underline underline-offset-4 hover:no-underline">
+        <a href={contactHref} data-metro-next class="link-grow font-semibold text-primary">
           {t(lang, 'journey.nextCta')}
         </a>
       </div>
@@ -67,7 +67,7 @@ const railWidth = `${Math.max(lines.length, 1) * 1.5}rem`;
         const stationCol = lines.indexOf(entry.line);
         const months = monthsBetween(entry.start, entry.end ?? now);
         return (
-          <li class="relative grid grid-cols-[var(--rail)_minmax(0,1fr)] gap-3" data-station-row>
+          <li class="station-row relative grid grid-cols-[var(--rail)_minmax(0,1fr)] gap-3" data-station-row>
             <div aria-hidden="true" class="relative">
               {lines.map((line, i) => (
                 <>
@@ -80,7 +80,7 @@ const railWidth = `${Math.max(lines.length, 1) * 1.5}rem`;
                 </>
               ))}
               <span
-                class:list={['absolute size-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-4 bg-bg', BORDER[entry.line]]}
+                class:list={['station-dot absolute size-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-4 bg-bg', BORDER[entry.line]]}
                 style={`left: ${col(stationCol)}; top: var(--dot);`}
               />
             </div>
@@ -112,7 +112,7 @@ const railWidth = `${Math.max(lines.length, 1) * 1.5}rem`;
                 </ul>
                 {entry.tech.length > 0 && (
                   <ul class="mt-3 flex flex-wrap gap-1.5">
-                    {entry.tech.map((tech) => <li class="rounded-full bg-surface-soft px-2 py-0.5 text-xs">{tech}</li>)}
+                    {entry.tech.map((tech) => <li class="chip rounded-full border border-transparent bg-surface-soft px-2 py-0.5 text-xs">{tech}</li>)}
                   </ul>
                 )}
                 {entry.projects.length > 0 && (
@@ -121,7 +121,7 @@ const railWidth = `${Math.max(lines.length, 1) * 1.5}rem`;
                     <ul class="mt-1 space-y-1 text-sm">
                       {entry.projects.map((p) => (
                         <li>
-                          <a href={`/${lang}/proyectos/${p.id}/`} class="text-primary underline underline-offset-4 hover:no-underline">
+                          <a href={`/${lang}/proyectos/${p.id}/`} class="link-grow text-primary">
                             {p.title[lang]}
                           </a>
                         </li>

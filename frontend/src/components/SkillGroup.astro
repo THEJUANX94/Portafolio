@@ -11,6 +11,6 @@ const { lang, skill } = Astro.props;
 <div data-skill-group>
   <h3 class="font-semibold">{skill.group[lang]}</h3>
   <ul class="mt-2 flex flex-wrap gap-1.5">
-    {skill.tech.map((tech) => <li class="rounded-full border border-border bg-bg px-2.5 py-1 text-sm">{tech}</li>)}
+    {skill.tech.map((tech) => <li class="chip rounded-full border border-border bg-bg px-2.5 py-1 text-sm">{tech}</li>)}
   </ul>
 </div>
