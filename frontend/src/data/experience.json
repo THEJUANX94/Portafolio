@@ -38,7 +38,7 @@
     "start": "2025-10",
     "end": null,
     "highlights": [
-      { "es": "Lideré al equipo que resolvió el reto empresarial de Cárdenas Visión.", "en": "Led the team that tackled Cárdenas Visión's business challenge." },
+      { "es": "Lideré al equipo que abordó el reto empresarial de Cárdenas Visión.", "en": "Led the team that tackled Cárdenas Visión's business challenge." },
       { "es": "La solución se entregó a la empresa y seguimos desarrollándola en conjunto.", "en": "The solution was handed over to the company and we keep developing it together." }
     ],
     "tech": ["Node.js", "React", "n8n", "Vapi"],

@@ -3,6 +3,6 @@
   { "id": "produccion", "group": { "es": "Las pongo en producción", "en": "I ship them to production" }, "tech": ["Docker", "Docker Compose", "Nginx", "GitHub Actions", "Git"], "order": 2 },
   { "id": "servidores", "group": { "es": "Mantengo servidores estables y seguros", "en": "I keep servers stable and secure" }, "tech": ["Nutanix AHV", "AlmaLinux", "Windows Server", "Zabbix", "Uptime Kuma", "Keycloak", "fail2ban"], "order": 3 },
   { "id": "datos", "group": { "es": "Gestiono datos", "en": "I manage data" }, "tech": ["PostgreSQL", "Oracle SQL", "MySQL", "SQLite", "MongoDB"], "order": 4 },
-  { "id": "equipos", "group": { "es": "Documento y lidero equipos", "en": "I document and lead teams" }, "tech": ["docs-as-code", "ADRs", "Twelve-Factor", "Liderazgo técnico"], "order": 5 },
+  { "id": "equipos", "group": { "es": "Documento y lidero equipos", "en": "I document and lead teams" }, "tech": ["docs-as-code", "ADRs", "Twelve-Factor", "Tech leadership"], "order": 5 },
   { "id": "nube", "group": { "es": "Nube", "en": "Cloud" }, "tech": ["Microsoft Azure", "Google Cloud"], "order": 6 }
 ]

@@ -36,7 +36,7 @@ graph TD
 | Carpeta | Responsabilidad |
 |---|---|
 | `src/data/` | Contenido (perfil, experiencia, proyectos, habilidades, cursos). Único lugar que se edita para cambiar información. |
-| `src/lib/` | Lógica pura sin dependencias de Astro: idiomas, fechas, esquemas zod. Probada con Vitest. |
+| `src/lib/` | Lógica pura sin dependencias del runtime de Astro (solo `astro/zod`): idiomas, fechas, esquemas zod. Probada con Vitest. |
 | `src/content.config.ts` | Define colecciones con `file()` loader y agrega referencias entre colecciones. |
 | `src/i18n/` | Textos de interfaz (botones, etiquetas). Mismas claves en ambos idiomas. |
 | `src/layouts/` | `BaseLayout`: `<head>`, SEO, `hreflang`, script anti-parpadeo del tema. |
