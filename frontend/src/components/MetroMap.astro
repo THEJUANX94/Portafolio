@@ -29,7 +29,7 @@ const col = (i: number) => `calc(${i} * 1.5rem + 0.75rem)`;
 const railWidth = `${Math.max(lines.length, 1) * 1.5}rem`;
 ---
 <div data-metro style={`--rail: ${railWidth}; --dot: 1.75rem;`}>
-  <ul aria-label={t(lang, 'journey.legend')} class="mb-6 flex flex-wrap gap-2 text-sm" data-metro-legend>
+  <ul aria-label={t(lang, 'journey.legend')} class="mb-6 flex flex-wrap gap-2 text-sm" data-metro-legend data-cascade>
     {
       lines.map((line) => (
         <li class="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1">
@@ -42,7 +42,7 @@ const railWidth = `${Math.max(lines.length, 1) * 1.5}rem`;
 
   <ol class="relative" aria-label={t(lang, 'journey.title')}>
     <!-- Terminal: todas las líneas confluyen aquí -->
-    <li class="relative grid grid-cols-[var(--rail)_minmax(0,1fr)] gap-3">
+    <li class="relative grid grid-cols-[var(--rail)_minmax(0,1fr)] gap-3" data-cascade>
       <div aria-hidden="true" class="relative">
         {lines.length > 1 && (
           <span class:list={['absolute h-1.5 rounded-full', BG[lines[0]]]} style={`top: calc(var(--dot) - 0.1875rem); left: ${col(0)}; width: calc(${lines.length - 1} * 1.5rem);`} />
@@ -67,7 +67,7 @@ const railWidth = `${Math.max(lines.length, 1) * 1.5}rem`;
         const stationCol = lines.indexOf(entry.line);
         const months = monthsBetween(entry.start, entry.end ?? now);
         return (
-          <li class="station-row relative grid grid-cols-[var(--rail)_minmax(0,1fr)] gap-3" data-station-row>
+          <li class="station-row relative grid grid-cols-[var(--rail)_minmax(0,1fr)] gap-3" data-station-row data-cascade>
             <div aria-hidden="true" class="relative">
               {lines.map((line, i) => (
                 <>

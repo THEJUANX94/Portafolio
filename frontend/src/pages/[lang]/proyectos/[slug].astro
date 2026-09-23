@@ -45,7 +45,7 @@ const external = 'link-grow text-primary';
 ---
 <BaseLayout lang={lang} title={`${project.title[lang]} — ${profileEntry.data.name}`} description={project.tagline[lang]} type="article">
   <div class="mx-auto max-w-3xl px-4 py-6 lg:py-10">
-    <header class="flex items-center justify-between gap-2">
+    <header class="flex items-center justify-between gap-2" data-cascade>
       <a href={`/${lang}/#projects`} data-back-link class="link-grow font-semibold text-primary">
         <span aria-hidden="true">← </span>{t(lang, 'project.back')}
       </a>
@@ -57,12 +57,12 @@ const external = 'link-grow text-primary';
 
     <main id="main" class="mt-8">
       <article data-project={project.id}>
-        <h1 class="text-3xl font-bold leading-tight text-primary" style={`view-transition-name: project-title-${project.id}`}>{project.title[lang]}</h1>
-        <p class="mt-2 text-lg text-text-muted">{project.tagline[lang]}</p>
+        <h1 class="text-3xl font-bold leading-tight text-primary" style={`view-transition-name: project-title-${project.id}`} data-cascade>{project.title[lang]}</h1>
+        <p class="mt-2 text-lg text-text-muted" data-cascade>{project.tagline[lang]}</p>
 
         {
           project.visibility === 'anonymized' && (
-            <p data-anonymized-note class="mt-5 rounded-lg border border-border bg-surface-soft px-4 py-3 text-sm">
+            <p data-anonymized-note data-cascade class="mt-5 rounded-lg border border-border bg-surface-soft px-4 py-3 text-sm">
               {t(lang, 'project.anonymized')}
             </p>
           )
@@ -70,14 +70,14 @@ const external = 'link-grow text-primary';
 
         {
           story.map(([key, text]) => (
-            <section class="mt-8">
+            <section class="mt-8" data-cascade>
               <h2 class="text-xl font-bold text-primary">{t(lang, key)}</h2>
               <p class="mt-2 leading-relaxed">{text[lang]}</p>
             </section>
           ))
         }
 
-        <section class="mt-8 rounded-xl border border-accent bg-surface-soft p-5" data-project-result>
+        <section class="mt-8 rounded-xl border border-accent bg-surface-soft p-5" data-project-result data-cascade>
           <h2 class="text-xl font-bold text-primary">{t(lang, 'project.result')}</h2>
           <p class="mt-2 leading-relaxed">{project.result[lang]}</p>
           {
@@ -91,7 +91,7 @@ const external = 'link-grow text-primary';
 
         {
           project.images.length > 0 && (
-            <section class="mt-8">
+            <section class="mt-8" data-cascade>
               <h2 class="text-xl font-bold text-primary">{t(lang, 'project.images')}</h2>
               <div class="mt-3 grid gap-4">
                 {project.images.map((img) => (
@@ -105,7 +105,7 @@ const external = 'link-grow text-primary';
           )
         }
 
-        <section class="mt-8">
+        <section class="mt-8" data-cascade>
           <h2 class="text-xl font-bold text-primary">{t(lang, 'project.tech')}</h2>
           <ul class="mt-3 flex flex-wrap gap-1.5">
             {project.tech.map((tech) => <li class="chip rounded-full border border-border bg-surface px-2.5 py-1 text-sm">{tech}</li>)}
@@ -114,7 +114,7 @@ const external = 'link-grow text-primary';
 
         {
           project.visibility === 'full' && (project.repo || project.demo) && (
-            <section class="mt-8">
+            <section class="mt-8" data-cascade>
               <h2 class="text-xl font-bold text-primary">{t(lang, 'project.links')}</h2>
               <ul class="mt-2 space-y-1">
                 {project.repo && (
@@ -138,7 +138,7 @@ const external = 'link-grow text-primary';
 
         {
           related.length > 0 && (
-            <section class="mt-8" data-project-related>
+            <section class="mt-8" data-project-related data-cascade>
               <h2 class="text-xl font-bold text-primary">{t(lang, 'project.related')}</h2>
               <ul class="mt-2 space-y-1">
                 {related.map((e) => (
@@ -155,7 +155,7 @@ const external = 'link-grow text-primary';
 
       {
         (prev || next) && (
-          <nav aria-label={t(lang, 'project.more')} class="mt-12 grid gap-3 sm:grid-cols-2" data-project-nav>
+          <nav aria-label={t(lang, 'project.more')} class="mt-12 grid gap-3 sm:grid-cols-2" data-project-nav data-cascade>
             {prev ? (
               <a href={`/${lang}/proyectos/${prev.id}/`} rel="prev" data-prev-link class="hover-lift hover-arrow-back rounded-xl border border-border bg-surface p-4 hover:border-accent focus-visible:outline-2 focus-visible:outline-primary">
                 <span class="block text-sm text-text-muted"><span aria-hidden="true" class="arrow mr-1">←</span>{t(lang, 'project.prev')}</span>

@@ -21,6 +21,8 @@ const { lang } = Astro.props;
   </svg>
 </button>
 <script>
+  import { cascadeSteps, CASCADE } from '../lib/theme-cascade';
+
   const KEY = 'theme';
   function current(): 'light' | 'dark' {
     const set = document.documentElement.dataset.theme;
@@ -33,13 +35,47 @@ const { lang } = Astro.props;
     }
   }
   sync();
-  for (const btn of document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]')) {
-    btn.addEventListener('click', () => {
-      const next = current() === 'dark' ? 'light' : 'dark';
-      document.documentElement.dataset.theme = next;
-      try { localStorage.setItem(KEY, next); } catch { /* almacenamiento no disponible */ }
-      sync();
+
+  function applyTheme(next: 'light' | 'dark') {
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem(KEY, next); } catch { /* almacenamiento no disponible */ }
+    sync();
+  }
+
+  let cascadeTimer: number | undefined;
+
+  function cascadeTo(next: 'light' | 'dark', button: HTMLButtonElement) {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return applyTheme(next);
+
+    const blocks = [...document.querySelectorAll<HTMLElement>('[data-cascade]')];
+    const steps = cascadeSteps(blocks.map((el) => el.getBoundingClientRect()), window.innerHeight);
+    blocks.forEach((el, i) => el.style.setProperty('--cascade-step', String(steps[i])));
+
+    const root = document.documentElement;
+    root.classList.add('theme-cascade');
+    applyTheme(next);
+
+    blocks.forEach((el, i) => {
+      el.animate([{ scale: '1' }, { scale: '0.985' }, { scale: '1' }], {
+        duration: 450,
+        delay: steps[i] * CASCADE.stepMs,
+        easing: 'ease',
+      });
     });
+    for (const svg of button.querySelectorAll('svg')) {
+      svg.animate([{ rotate: '0deg' }, { rotate: '360deg' }], { duration: 600, easing: 'ease-in-out' });
+    }
+
+    window.clearTimeout(cascadeTimer);
+    cascadeTimer = window.setTimeout(() => {
+      root.classList.remove('theme-cascade');
+      blocks.forEach((el) => el.style.removeProperty('--cascade-step'));
+    }, CASCADE.totalMs + 50);
+  }
+
+  for (const btn of document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]')) {
+    btn.addEventListener('click', () => cascadeTo(current() === 'dark' ? 'light' : 'dark', btn));
   }
   matchMedia('(prefers-color-scheme: dark)').addEventListener('change', sync);
 </script>

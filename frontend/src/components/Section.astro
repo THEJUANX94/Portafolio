@@ -11,6 +11,7 @@ const { id, title, highlight = false, delay = 0, vtName } = Astro.props;
 <section
   id={id}
   aria-labelledby={`${id}-title`}
+  data-cascade
   class:list={[
     'rise-in rounded-2xl border p-6 sm:p-8',
     highlight ? 'border-accent bg-surface-soft' : 'border-border bg-surface',
