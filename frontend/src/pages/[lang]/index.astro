@@ -1,27 +1,67 @@
 ---
-import { getEntry } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ThemeToggle from '../../components/ThemeToggle.astro';
-import LangSwitch from '../../components/LangSwitch.astro';
+import ProfileCard from '../../components/ProfileCard.astro';
+import Section from '../../components/Section.astro';
+import ExperienceSummary from '../../components/ExperienceSummary.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import SkillGroup from '../../components/SkillGroup.astro';
+import EducationList from '../../components/EducationList.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
 import { LOCALES, type Locale } from '../../lib/i18n';
+import { byOrder, featuredProjects, latestWork } from '../../lib/home';
+import { t } from '../../i18n';
 
 export function getStaticPaths() {
   return LOCALES.map((lang) => ({ params: { lang } }));
 }
 
 const lang = Astro.params.lang as Locale;
-const profile = await getEntry('profile', 'main');
-if (!profile) throw new Error('Falta la entrada "main" en src/data/profile.json');
-const p = profile.data;
+
+const profileEntry = await getEntry('profile', 'main');
+if (!profileEntry) throw new Error('Falta la entrada "main" en src/data/profile.json');
+const profile = profileEntry.data;
+
+const experience = (await getCollection('experience')).map((e) => e.data);
+const current = latestWork(experience);
+if (!current) throw new Error('No hay ninguna experiencia con line "work" en src/data/experience.json');
+
+const projects = featuredProjects((await getCollection('projects')).map((e) => ({ id: e.id, ...e.data })));
+const skills = byOrder((await getCollection('skills')).map((e) => e.data));
+const courses = byOrder((await getCollection('courses')).map((e) => e.data));
 ---
 <BaseLayout lang={lang}>
-  <header class="mx-auto flex max-w-5xl items-center justify-end gap-2 px-4 py-4">
-    <LangSwitch lang={lang} />
-    <ThemeToggle lang={lang} />
-  </header>
-  <main id="main" class="mx-auto max-w-5xl px-4 py-10">
-    <h1 class="text-3xl font-bold text-primary">{p.name}</h1>
-    <p class="mt-2 text-lg text-text-muted">{p.title[lang]}</p>
-    <p class="mt-6 max-w-prose">{p.summary[lang]}</p>
-  </main>
+  <div class="mx-auto grid max-w-6xl gap-6 px-4 py-6 lg:grid-cols-[20rem_minmax(0,1fr)] lg:items-start lg:gap-8 lg:py-10">
+    <ProfileCard lang={lang} profile={profile} />
+
+    <main id="main" class="flex min-w-0 flex-col gap-6">
+      <Section id="about" title={t(lang, 'home.about')}>
+        <p class="text-lg leading-relaxed">{profile.summary[lang]}</p>
+      </Section>
+
+      <Section id="experience" title={t(lang, 'home.experience')} highlight>
+        <ExperienceSummary lang={lang} entry={current} />
+      </Section>
+
+      <Section id="projects" title={t(lang, 'home.projects')}>
+        <div class="grid gap-4 sm:grid-cols-2">
+          {projects.map(({ id, ...project }) => <ProjectCard lang={lang} id={id} project={project} />)}
+        </div>
+      </Section>
+
+      <Section id="skills" title={t(lang, 'home.skills')}>
+        <div class="grid gap-5 sm:grid-cols-2">
+          {skills.map((skill) => <SkillGroup lang={lang} skill={skill} />)}
+        </div>
+      </Section>
+
+      <Section id="education" title={t(lang, 'home.education')}>
+        <EducationList lang={lang} education={profile.education} courses={courses} />
+      </Section>
+
+      <Section id="contact" title={t(lang, 'home.freelance.title')}>
+        <ContactCTA lang={lang} email={profile.email} />
+      </Section>
+    </main>
+  </div>
 </BaseLayout>
