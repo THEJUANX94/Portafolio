@@ -31,4 +31,6 @@ jobs:
         if: failure()
         with:
           name: playwright-report
-          path: frontend/playwright-report
+          path: |
+            frontend/playwright-report
+            frontend/test-results

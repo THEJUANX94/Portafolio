@@ -10,6 +10,7 @@ import '../styles/global.css';
     <meta name="robots" content="noindex" />
     <link rel="alternate" hreflang="es" href="/es/" />
     <link rel="alternate" hreflang="en" href="/en/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body class="grid min-h-dvh place-items-center bg-bg font-sans text-text">
     <noscript>
@@ -20,7 +21,7 @@ import '../styles/global.css';
     </noscript>
     <script>
       import { pickLocale } from '../lib/i18n';
-      const langs = navigator.languages.length ? navigator.languages : [navigator.language];
+      const langs = navigator.languages?.length ? navigator.languages : [navigator.language];
       location.replace(`/${pickLocale(langs)}/`);
     </script>
   </body>

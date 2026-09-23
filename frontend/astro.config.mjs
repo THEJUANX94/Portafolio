@@ -16,7 +16,10 @@ export default defineConfig({
   },
   integrations: [
     react(),
-    sitemap({ i18n: { defaultLocale: 'es', locales: { es: 'es-CO', en: 'en-US' } } }),
+    sitemap({
+      i18n: { defaultLocale: 'es', locales: { es: 'es-CO', en: 'en-US' } },
+      filter: (page) => new URL(page).pathname !== '/',
+    }),
   ],
   vite: { plugins: [tailwindcss()] },
 });
