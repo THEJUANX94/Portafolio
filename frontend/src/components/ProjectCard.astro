@@ -16,7 +16,7 @@ const cover = project.images[0];
     cover ? (
       <img src={cover.src} alt={cover.alt[lang]} loading="lazy" class="aspect-video w-full object-cover" />
     ) : (
-      <div aria-hidden="true" class="aspect-video w-full bg-surface-soft" />
+      <div aria-hidden="true" class="h-1.5 w-full bg-accent" />
     )
   }
   <div class="flex flex-1 flex-col p-4">
