@@ -1,0 +1,135 @@
+---
+import type { Locale } from '../lib/i18n';
+import type { Localized } from '../lib/schemas';
+import type { Line, MetroLayout, MetroInput } from '../lib/metro';
+import { formatRange, formatDuration, monthsBetween } from '../lib/dates';
+import { t } from '../i18n';
+
+export interface StationView extends MetroInput {
+  role: Localized;
+  organization: Localized;
+  highlights: Localized[];
+  tech: string[];
+  projects: { id: string; title: Localized }[];
+}
+
+interface Props {
+  lang: Locale;
+  layout: MetroLayout<StationView>;
+  now: string;
+  contactHref: string;
+}
+const { lang, layout, now, contactHref } = Astro.props;
+const { lines, rows } = layout;
+
+const LINE_KEY = { work: 'line.work', projects: 'line.projects', education: 'line.education' } as const;
+const BG: Record<Line, string> = { work: 'bg-line-work', projects: 'bg-line-projects', education: 'bg-line-education' };
+const BORDER: Record<Line, string> = { work: 'border-line-work', projects: 'border-line-projects', education: 'border-line-education' };
+const col = (i: number) => `calc(${i} * 1.5rem + 0.75rem)`;
+const railWidth = `${Math.max(lines.length, 1) * 1.5}rem`;
+---
+<div data-metro style={`--rail: ${railWidth}; --dot: 1.75rem;`}>
+  <ul aria-label={t(lang, 'journey.legend')} class="mb-6 flex flex-wrap gap-2 text-sm" data-metro-legend>
+    {
+      lines.map((line) => (
+        <li class="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1">
+          <span aria-hidden="true" class:list={['h-1.5 w-5 rounded-full', BG[line]]} />
+          {t(lang, LINE_KEY[line])}
+        </li>
+      ))
+    }
+  </ul>
+
+  <ol class="relative">
+    <!-- Terminal: todas las líneas confluyen aquí -->
+    <li class="relative grid grid-cols-[var(--rail)_minmax(0,1fr)] gap-3 pb-4">
+      <div aria-hidden="true" class="relative">
+        {lines.length > 1 && (
+          <span class="absolute h-1.5 rounded-full bg-line-work" style={`top: calc(var(--dot) - 0.1875rem); left: ${col(0)}; width: calc(${lines.length - 1} * 1.5rem);`} />
+        )}
+        {lines.map((line, i) => (
+          <span class:list={['absolute w-1.5 -translate-x-1/2', BG[line]]} style={`left: ${col(i)}; top: var(--dot); bottom: 0;`} />
+        ))}
+        <span class="absolute size-5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-line-work ring-4 ring-bg" style={`left: ${col(0)}; top: var(--dot);`} />
+      </div>
+      <div class="flex min-h-14 flex-wrap items-center gap-x-3 gap-y-1">
+        <span class="font-semibold">{t(lang, 'journey.next')}</span>
+        <a href={contactHref} data-metro-next class="font-semibold text-primary underline underline-offset-4 hover:no-underline">
+          {t(lang, 'journey.nextCta')}
+        </a>
+      </div>
+    </li>
+
+    {
+      rows.map(({ entry, tracks }, rowIndex) => {
+        const stationCol = lines.indexOf(entry.line);
+        const months = monthsBetween(entry.start, entry.end ?? now);
+        return (
+          <li class="relative grid grid-cols-[var(--rail)_minmax(0,1fr)] gap-3 pb-4" data-station-row>
+            <div aria-hidden="true" class="relative">
+              {lines.map((line, i) => (
+                <>
+                  {tracks[line].up && (
+                    <span class:list={['absolute top-0 w-1.5 -translate-x-1/2', BG[line]]} style={`left: ${col(i)}; height: var(--dot);`} />
+                  )}
+                  {tracks[line].down && (
+                    <span class:list={['absolute bottom-0 w-1.5 -translate-x-1/2', BG[line]]} style={`left: ${col(i)}; top: var(--dot);`} />
+                  )}
+                </>
+              ))}
+              <span
+                class:list={['absolute size-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-4 bg-bg', BORDER[entry.line]]}
+                style={`left: ${col(stationCol)}; top: var(--dot);`}
+              />
+            </div>
+
+            <details
+              name="metro"
+              open={rowIndex === 0}
+              data-station
+              data-line={entry.line}
+              class:list={['group rounded-xl border border-l-4 bg-surface open:shadow-sm', BORDER[entry.line]]}
+            >
+              <summary class="flex min-h-14 cursor-pointer list-none items-center gap-3 rounded-xl px-4 py-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary [&::-webkit-details-marker]:hidden">
+                <span class="min-w-0 flex-1">
+                  <span class="block font-semibold">{entry.role[lang]}</span>
+                  <span class="block text-sm text-text-muted">
+                    {entry.organization[lang]} · {formatRange(entry.start, entry.end, lang)}
+                  </span>
+                </span>
+                <span aria-hidden="true" class="text-primary transition-transform group-open:rotate-180">▾</span>
+              </summary>
+              <div class="border-t border-border px-4 pb-4 pt-3" data-station-body>
+                <p class="text-sm font-medium text-primary">
+                  {t(lang, LINE_KEY[entry.line])} · {formatDuration(months, lang)}
+                </p>
+                <ul class="mt-3 list-disc space-y-1.5 pl-5">
+                  {entry.highlights.map((h) => <li>{h[lang]}</li>)}
+                </ul>
+                {entry.tech.length > 0 && (
+                  <ul class="mt-3 flex flex-wrap gap-1.5">
+                    {entry.tech.map((tech) => <li class="rounded-full bg-surface-soft px-2 py-0.5 text-xs">{tech}</li>)}
+                  </ul>
+                )}
+                {entry.projects.length > 0 && (
+                  <div class="mt-4">
+                    <p class="text-sm font-semibold">{t(lang, 'journey.projects')}</p>
+                    <ul class="mt-1 space-y-1 text-sm">
+                      {entry.projects.map((p) => (
+                        <li>
+                          <a href={`/${lang}/proyectos/${p.id}/`} class="text-primary underline underline-offset-4 hover:no-underline">
+                            {p.title[lang]}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </details>
+          </li>
+        );
+      })
+    }
+  </ol>
+</div>
