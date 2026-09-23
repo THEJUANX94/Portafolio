@@ -58,8 +58,8 @@
     "id": "cardenas-vision",
     "title": { "es": "Reto Cárdenas Visión — Hackathon Boyacá Innovate 2025", "en": "Cárdenas Visión challenge — Hackathon Boyacá Innovate 2025" },
     "tagline": {
-      "es": "Solución creada en una hackatón que la empresa siguió desarrollando con nosotros",
-      "en": "A hackathon solution the company kept developing with us"
+      "es": "Primer puesto en la Hackathon Boyacá Innovate 2025; la empresa siguió desarrollándola con nosotros",
+      "en": "First place at Hackathon Boyacá Innovate 2025; the company kept developing it with us"
     },
     "problem": {
       "es": "Reto empresarial de Cárdenas Visión planteado en la primera Hackathon Boyacá Innovate (28–30 de octubre de 2025).",
@@ -71,9 +71,12 @@
       "en": "An application with appointment management and an AI-powered automated service channel."
     },
     "result": {
-      "es": "La solución se entregó a Cárdenas Visión y el desarrollo continúa en conjunto con la empresa.",
-      "en": "The solution was handed over to Cárdenas Visión and development continues together with the company."
+      "es": "Ganamos el primer puesto. La solución se entregó a Cárdenas Visión y el desarrollo continúa en conjunto con la empresa.",
+      "en": "We won first place. The solution was handed over to Cárdenas Visión and development continues together with the company."
     },
+    "metrics": [
+      { "es": "1.er puesto — Hackathon Boyacá Innovate 2025", "en": "1st place — Hackathon Boyacá Innovate 2025" }
+    ],
     "images": [],
     "tech": ["Node.js", "React", "n8n", "Vapi"],
     "visibility": "anonymized",

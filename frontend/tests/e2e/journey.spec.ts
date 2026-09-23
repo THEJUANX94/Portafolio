@@ -9,10 +9,16 @@ test.describe('recorrido en español', () => {
     await expect(page.getByRole('heading', { level: 1 })).toHaveText('Mi recorrido');
     await expect(page.locator('[data-metro-legend] li')).toHaveText(['Empleo', 'Proyectos y hackatón']);
     const stations = page.locator('[data-station]');
-    await expect(stations).toHaveCount(3);
+    await expect(stations).toHaveCount(5);
     await expect(stations.nth(0)).toHaveAttribute('data-line', 'projects');
+    await expect(stations.nth(0)).toContainText('Líder de equipo');
     await expect(stations.nth(1)).toContainText('Tech Lead');
     await expect(stations.nth(2)).toContainText('Practicante');
+    await expect(stations.nth(3)).toHaveAttribute('data-line', 'projects');
+    await expect(stations.nth(3)).toContainText('Aplicación distribuida de estudiantes');
+    await expect(stations.nth(3)).toContainText('2022 – 2023');
+    await expect(stations.nth(4)).toHaveAttribute('data-line', 'projects');
+    await expect(stations.nth(4)).toContainText('Ancla');
   });
 
   test('solo la estación más reciente está abierta al cargar', async ({ page }) => {

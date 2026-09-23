@@ -38,10 +38,38 @@
     "start": "2025-10",
     "end": null,
     "highlights": [
-      { "es": "Lideré al equipo que abordó el reto empresarial de Cárdenas Visión.", "en": "Led the team that tackled Cárdenas Visión's business challenge." },
+      { "es": "Lideré al equipo que ganó el primer puesto en el reto empresarial de Cárdenas Visión.", "en": "Led the team that won first place in Cárdenas Visión's business challenge." },
       { "es": "La solución se entregó a la empresa y seguimos desarrollándola en conjunto.", "en": "The solution was handed over to the company and we keep developing it together." }
     ],
     "tech": ["Node.js", "React", "n8n", "Vapi"],
     "projects": ["cardenas-vision"]
+  },
+  {
+    "id": "azure-distribuidos-uptc",
+    "line": "projects",
+    "organization": { "es": "Universidad Pedagógica y Tecnológica de Colombia (UPTC)", "en": "Universidad Pedagógica y Tecnológica de Colombia (UPTC)" },
+    "role": { "es": "Aplicación distribuida de estudiantes", "en": "Distributed student application" },
+    "start": "2022-02",
+    "end": "2023-03",
+    "approximate": true,
+    "highlights": [
+      { "es": "Sistema web para gestionar estudiantes, materias, docentes y cupos, desplegado en Azure.", "en": "Web system to manage students, courses, teachers and seats, deployed on Azure." }
+    ],
+    "tech": ["TypeScript", "Angular", "Azure", "PostgreSQL"],
+    "projects": ["azure-distribuidos"]
+  },
+  {
+    "id": "ancla-uptc",
+    "line": "projects",
+    "organization": { "es": "Universidad Pedagógica y Tecnológica de Colombia (UPTC)", "en": "Universidad Pedagógica y Tecnológica de Colombia (UPTC)" },
+    "role": { "es": "Ancla — inventario y facturación", "en": "Ancla — inventory and invoicing" },
+    "start": "2022-02",
+    "end": "2023-02",
+    "approximate": true,
+    "highlights": [
+      { "es": "Aplicación de escritorio de inventario y facturación para una empresa de maquillaje.", "en": "Desktop inventory and invoicing application for a cosmetics business." }
+    ],
+    "tech": ["Java", "SQLite"],
+    "projects": ["ancla"]
   }
 ]
