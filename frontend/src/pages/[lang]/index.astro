@@ -37,31 +37,31 @@ const courses = byOrder((await getCollection('courses')).map((e) => e.data));
     <ProfileCard lang={lang} profile={profile} />
 
     <main id="main" class="flex min-w-0 flex-col gap-6">
-      <Section id="about" title={t(lang, 'home.about')}>
+      <Section id="about" title={t(lang, 'home.about')} delay={0}>
         <p class="text-lg leading-relaxed">{profile.summary[lang]}</p>
       </Section>
 
-      <Section id="experience" title={t(lang, 'home.experience')} highlight>
+      <Section id="experience" title={t(lang, 'home.experience')} highlight delay={60}>
         <ExperienceSummary lang={lang} entry={current} />
       </Section>
 
-      <Section id="projects" title={t(lang, 'home.projects')}>
+      <Section id="projects" title={t(lang, 'home.projects')} delay={120}>
         <div class="grid gap-4 sm:grid-cols-2">
           {projects.map(({ id, ...project }) => <ProjectCard lang={lang} id={id} project={project} />)}
         </div>
       </Section>
 
-      <Section id="skills" title={t(lang, 'home.skills')}>
+      <Section id="skills" title={t(lang, 'home.skills')} delay={180}>
         <div class="grid gap-5 sm:grid-cols-2">
           {skills.map((skill) => <SkillGroup lang={lang} skill={skill} />)}
         </div>
       </Section>
 
-      <Section id="education" title={t(lang, 'home.education')}>
+      <Section id="education" title={t(lang, 'home.education')} delay={240}>
         <EducationList lang={lang} education={profile.education} courses={courses} />
       </Section>
 
-      <Section id="contact" title={t(lang, 'home.freelance.title')}>
+      <Section id="contact" title={t(lang, 'home.freelance.title')} delay={300}>
         <ContactCTA lang={lang} email={profile.email} />
       </Section>
     </main>

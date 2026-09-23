@@ -3,16 +3,18 @@ interface Props {
   id: string;
   title: string;
   highlight?: boolean;
+  delay?: number;
 }
-const { id, title, highlight = false } = Astro.props;
+const { id, title, highlight = false, delay = 0 } = Astro.props;
 ---
 <section
   id={id}
   aria-labelledby={`${id}-title`}
   class:list={[
-    'rounded-2xl border p-6 sm:p-8',
+    'rise-in rounded-2xl border p-6 sm:p-8',
     highlight ? 'border-accent bg-surface-soft' : 'border-border bg-surface',
   ]}
+  style={`animation-delay: ${delay}ms`}
 >
   <h2 id={`${id}-title`} class="text-xl font-bold text-primary">{title}</h2>
   <div class="mt-4">
