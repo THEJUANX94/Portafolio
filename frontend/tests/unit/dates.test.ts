@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { formatMonth, formatRange, monthsBetween, formatDuration } from '../../src/lib/dates';
+import { formatMonth, formatRange, monthsBetween, formatDuration, toYearMonth } from '../../src/lib/dates';
 
 describe('formatMonth', () => {
   it('formatea YYYY-MM por idioma', () => {
@@ -49,5 +49,13 @@ describe('formatDuration', () => {
   it('rechaza valores no enteros positivos', () => {
     expect(() => formatDuration(0, 'es')).toThrow();
     expect(() => formatDuration(1.5, 'es')).toThrow();
+  });
+});
+
+describe('toYearMonth', () => {
+  it('convierte una fecha a YYYY-MM con mes de dos dígitos', () => {
+    expect(toYearMonth(new Date(2026, 8, 22))).toBe('2026-09');
+    expect(toYearMonth(new Date(2025, 11, 31))).toBe('2025-12');
+    expect(toYearMonth(new Date(2025, 0, 1))).toBe('2025-01');
   });
 });

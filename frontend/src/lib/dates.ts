@@ -52,3 +52,9 @@ export function formatDuration(totalMonths: number, locale: Locale): string {
   if (months > 0) parts.push(`${months} ${months === 1 ? u.m[0] : u.m[1]}`);
   return parts.join(' ');
 }
+
+/** Fecha local → 'YYYY-MM'. */
+export function toYearMonth(date: Date): string {
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  return `${date.getFullYear()}-${month}`;
+}
