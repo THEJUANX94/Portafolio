@@ -21,10 +21,8 @@ Cabeceras de seguridad y caché: `frontend/public/_headers` (CSP, `X-Frame-Optio
 ## Configuración inicial (una sola vez, la hace el dueño de la cuenta)
 
 1. Crear una cuenta gratuita en https://dash.cloudflare.com/sign-up.
-2. Crear el proyecto de Pages vacío con el nombre exacto `jsmartinez-dev` y rama de producción `main`. Opciones:
-   - Dashboard: **Workers & Pages → Create → Pages → Upload assets (Direct Upload)** → nombre `jsmartinez-dev` → subir cualquier archivo (se reemplaza en el primer despliegue).
-   - O por terminal: `pnpm dlx wrangler login` y luego `pnpm dlx wrangler pages project create jsmartinez-dev --production-branch=main`.
-   Si el nombre ya estuviera tomado, Cloudflare asigna otro: actualizar `PAGES_PROJECT` y `SITE_URL` en el workflow.
+2. El proyecto de Pages `jsmartinez-dev` **lo crea la CI** en el primer despliegue (`preCommands` de `wrangler-action` con `wrangler pages project create … || true`). No hace falta crearlo en el dashboard; **no** usar el flujo "Create application" conectado a Git (es para Workers y compilaría sin pasar las pruebas).
+   Si el nombre estuviera tomado, el despliegue falla con ese error: cambiar `PAGES_PROJECT` y `SITE_URL` en el workflow.
 3. Crear un API token: **My Profile → API Tokens → Create Token → Custom token**, permiso **Account → Cloudflare Pages → Edit**, limitado a tu cuenta.
 4. Copiar el **Account ID** (Workers & Pages → panel derecho, o la URL del dashboard).
 5. En GitHub, **Settings → Secrets and variables → Actions → New repository secret** del repo `THEJUANX94/Portafolio`:
