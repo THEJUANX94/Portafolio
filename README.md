@@ -2,6 +2,8 @@
 
 Portafolio web bilingüe (español / inglés) para reclutadores: perfil, experiencia como mapa de metro, proyectos y CV descargable.
 
+**En línea:** https://jsmartinez-dev.pages.dev
+
 ## Stack
 
 | Capa | Tecnología |
