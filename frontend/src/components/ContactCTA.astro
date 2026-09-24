@@ -1,6 +1,7 @@
 ---
 import type { Locale } from '../lib/i18n';
 import { t } from '../i18n';
+import { composeUrl } from '../lib/contact';
 
 interface Props {
   lang: Locale;
@@ -11,10 +12,12 @@ const { lang, email } = Astro.props;
 <div>
   <p>{t(lang, 'home.freelance.body')}</p>
   <a
-    href={`mailto:${email}`}
+    href={composeUrl(email, t(lang, 'contact.subject'))}
+    target="_blank"
+    rel="noopener"
     data-freelance-link
     class="mt-4 inline-block rounded-lg border border-primary px-4 py-2.5 font-semibold text-primary hover:bg-surface-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
   >
-    {t(lang, 'home.freelance.cta')}
+    {t(lang, 'home.freelance.cta')}<span class="sr-only"> {t(lang, 'profile.newTab')}</span>
   </a>
 </div>

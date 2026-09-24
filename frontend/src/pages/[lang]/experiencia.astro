@@ -8,6 +8,7 @@ import { LOCALES, type Locale } from '../../lib/i18n';
 import { buildMetro } from '../../lib/metro';
 import { toYearMonth } from '../../lib/dates';
 import { t } from '../../i18n';
+import { composeUrl } from '../../lib/contact';
 
 export function getStaticPaths() {
   return LOCALES.map((lang) => ({ params: { lang } }));
@@ -56,7 +57,7 @@ const layout = buildMetro(stations, now);
       <h1 class="text-3xl font-bold text-primary" style="view-transition-name: journey-title" data-cascade>{t(lang, 'journey.title')}</h1>
       <p class="mt-2 text-text-muted" data-cascade>{t(lang, 'journey.intro')}</p>
       <div class="mt-8">
-        <MetroMap lang={lang} layout={layout} now={now} contactHref={`mailto:${profileEntry.data.email}`} />
+        <MetroMap lang={lang} layout={layout} now={now} contactHref={composeUrl(profileEntry.data.email, t(lang, 'contact.subject'))} />
       </div>
     </main>
   </div>

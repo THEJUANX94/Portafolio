@@ -42,7 +42,7 @@ test.describe('recorrido en español', () => {
 
   test('enlaces: volver, contacto y proyectos de la etapa', async ({ page }) => {
     await expect(page.locator('[data-back-link]')).toHaveAttribute('href', '/es/');
-    await expect(page.locator('[data-metro-next]')).toHaveAttribute('href', 'mailto:sebastianmn03@gmail.com');
+    await expect(page.locator('[data-metro-next]')).toHaveAttribute('href', 'https://mail.google.com/mail/?view=cm&fs=1&to=sebastianmn03%40gmail.com&su=Contacto+desde+tu+portafolio');
     await expect(page.locator('[data-station]').nth(0).getByRole('link')).toHaveAttribute('href', '/es/proyectos/cardenas-vision/');
   });
 

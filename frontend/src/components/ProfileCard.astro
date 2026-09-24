@@ -3,6 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import type { Locale } from '../lib/i18n';
 import { t } from '../i18n';
 import { initials } from '../lib/home';
+import { composeUrl } from '../lib/contact';
 import LangSwitch from './LangSwitch.astro';
 import ThemeToggle from './ThemeToggle.astro';
 
@@ -50,9 +51,12 @@ const button = 'rounded-lg px-4 py-2.5 text-center font-semibold focus-visible:o
     <a href={p.cv[lang]} download data-cv-link class:list={[button, 'shine bg-primary text-on-primary hover:opacity-90']}>
       {t(lang, 'profile.downloadCv')}
     </a>
-    <a href={`mailto:${p.email}`} data-contact-link class:list={[button, 'border border-primary text-primary hover:bg-surface-soft']}>
-      {t(lang, 'profile.contact')}
+    <a href={composeUrl(p.email, t(lang, 'contact.subject'))} target="_blank" rel="noopener" data-contact-link class:list={[button, 'border border-primary text-primary hover:bg-surface-soft']}>
+      {t(lang, 'profile.contact')}<span class="sr-only"> {t(lang, 'profile.newTab')}</span>
     </a>
+    <p class="mt-1 text-center text-sm text-text-muted">
+      {t(lang, 'profile.orEmail')} <a href={`mailto:${p.email}`} data-email-link class="link-grow break-all text-primary">{p.email}</a>
+    </p>
   </div>
 
   <dl class="mt-6 space-y-3 text-sm">

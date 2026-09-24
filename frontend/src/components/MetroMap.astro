@@ -56,8 +56,8 @@ const railWidth = `${Math.max(lines.length, 1) * 1.5}rem`;
       </div>
       <div class="mb-4 flex min-h-14 flex-wrap items-center gap-x-3 gap-y-1">
         <span class="font-semibold">{t(lang, 'journey.next')}</span>
-        <a href={contactHref} data-metro-next class="link-grow font-semibold text-primary">
-          {t(lang, 'journey.nextCta')}
+        <a href={contactHref} target="_blank" rel="noopener" data-metro-next class="link-grow font-semibold text-primary">
+          {t(lang, 'journey.nextCta')}<span class="sr-only"> {t(lang, 'profile.newTab')}</span>
         </a>
       </div>
     </li>

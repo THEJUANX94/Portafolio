@@ -52,5 +52,7 @@
   "project.related": "En mi recorrido",
   "project.more": "Más proyectos",
   "project.prev": "Anterior",
-  "project.next": "Siguiente"
+  "project.next": "Siguiente",
+  "contact.subject": "Contacto desde tu portafolio",
+  "profile.orEmail": "o escríbeme a"
 }

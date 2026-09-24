@@ -13,7 +13,10 @@ test.describe('principal en español', () => {
     const href = await cv.getAttribute('href');
     expect(href).toBe('/cv/CV-Juan-Sebastian-Martinez-ES.pdf');
     expect((await request.get(href!)).status()).toBe(200);
-    await expect(card.locator('[data-contact-link]')).toHaveAttribute('href', 'mailto:sebastianmn03@gmail.com');
+    await expect(card.locator('[data-contact-link]')).toHaveAttribute('href', 'https://mail.google.com/mail/?view=cm&fs=1&to=sebastianmn03%40gmail.com&su=Contacto+desde+tu+portafolio');
+    await expect(card.locator('[data-contact-link]')).toHaveAttribute('target', '_blank');
+    await expect(card.locator('[data-email-link]')).toHaveAttribute('href', 'mailto:sebastianmn03@gmail.com');
+    await expect(page.locator('[data-freelance-link]')).toHaveAttribute('href', 'https://mail.google.com/mail/?view=cm&fs=1&to=sebastianmn03%40gmail.com&su=Contacto+desde+tu+portafolio');
   });
 
   test('seis secciones en orden', async ({ page }) => {
